@@ -12,7 +12,7 @@ A branch is a version of a codebase separate from the master, in which code can 
 
 * What is a commit? What makes a good commit message?
 
-A commit is a save point in Git. Git doesn't autosave, so when a user makes changes to files, they must add those files to a staging area and then commit them to the repo to save the changes. It's like a video game where you play until you reach a save point and can then choose to save your progress - or not, if you like to live dangerously.
+A commit is a save point in Git. Git doesn't auto-save, so when a user makes changes to files, they must add those files to a staging area and then commit them to the repository to save the changes. It's like a video game where you play until you reach a save point and can then choose to save your progress - or not, if you like to live dangerously.
 
 A commit message should be specific about the changes you've made, as well as comprehensible to the others you're collaborating with. Also, brief!
 
