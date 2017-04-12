@@ -1,0 +1,37 @@
+Kristina Vragovic
+Week 2: Review and Reflect
+
+1. Briefly describe your understanding of what the browser does, including definitions of the following:
+
+client - The client is the user's computer.
+server - The server is a remote computer that the client is trying to communicate with.
+render - Rendering is when the client converts code (data about a web page's content) into a recognizable web page.
+
+The web browser is a program that does the work of rendering web page data.
+
+2. What is HTML? In your answer, include definitions of the following:
+
+HTML stands for "hypertext markup language" and is the language that clients and servers use to translate data about a web page and render it in your browser window.
+
+tag - Tags signal the beginning and end of an element.
+element - An element is a classification of content. Different elements are used to semantically arrange information on a page. The content along with its tags comprise the element.
+node - This is a generic term for all the different pieces of data (elements, tags, attributes, etc.) that make up an HTML document. Even the document itself can be considered a node. 
+attribute - Attributes are characteristics of the element that can be manipulated within the opening tag.
+block element - A block-level element can be styled with CSS and fills its container -- that is, with a line break before and after the "block." They begin on new lines by default.
+inline element - An inline element also can be styled with CSS, but the styling only applies to what is directly between the tags. They can begin and end anywhere on a line.
+
+3. Very briefly, explain the purpose of the following elements:
+
+head - The head element contains metadata about the page, including the title that displays on the tab, keywords, links to style sheets, etc.
+body - In contrast to the head element, the body element contains the content of the web page, or what appears inside the browser window.
+p - This stands for paragraph and denotes text that should be set off as a paragraph within the rest of the content of the page.
+form - This element signals that whatever is inside the opening and closing tags comprises a fillable form.
+div - This element signals that whatever is inside the tags should be considered within a container of some kind. These might have "class" or "id" elements to style certain parts of the page in different ways using CSS.
+span - This element is the inline version of div (a block element). Whereas div would be used to style a section of a page, span would be used to style a certain line of text or content within a section of a page.
+select - Within a form, this element creates a drop-down menu of options that the user can choose from.
+h2 - This stands for "header 2" and is a way of semantically noting that a header is second-most important on the page. For example, h1 is more important than h2, and h3 is less important.
+ol - This element stands for "unordered list" and creates bullet points by default.
+ul - This element stands for "ordered list" and creates numbering by default.
+table - This element signals that content on the page will be represented in a data table with columns and rows.
+tr - This element stands for "table row" and indicates that all the content within its tags comprise a row in a table.
+td - This element stands for "table data" and creates a cell within the row in the table (it is nested within the tr tags for this reason).
