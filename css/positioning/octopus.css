@@ -1,0 +1,31 @@
+/*Use margins to center the octopus horizontally on the page, and to put a little bit of space above its head.*/
+
+
+#octopus {
+  display: block;
+  margin: 125px auto;
+  width: 210px;
+}
+
+/*Use positioning to put the hat and glasses on the octopus.*/
+
+
+#hat {
+  display: block;
+  margin: 0px auto;
+  width: 275px;
+  position: relative;
+  bottom: 480px;
+  left: 10px;
+
+}
+
+#glasses {
+  display: block;
+  margin: 0px auto;
+  width: 135px;
+  position: relative;
+  bottom: 480px;
+  left: 3px;
+
+}
