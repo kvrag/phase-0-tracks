@@ -1,3 +1,5 @@
+/*"Cascading" means that styles can fall (or cascade) from one sheet to another so that one HTML document can be styled by multiple sheets. The browser chooses "seniority" based on the order in which the sheets are linked in the HTML document.*/
+
 section#contact-info {
   font-size: .8em;
 }
@@ -13,11 +15,14 @@ ul.accomplishments {
   font-size: .8em;
 }
 
+/*To style an element only when it is nested inside another element, separate the selectors with a space. The nested selector comes second.*/
 
-/*"Cascading" means that styles can fall (or cascade) from one style sheet to another, enabling multiple style sheets to be used on one HTML document.*/
+section section {
+  color: #444444;
+}
 
-/*http://css.maxdesign.com.au/selectutorial/advanced_cascade.htm*/
+/*Pseudoselectors work for part of an element, like the first line of the paragraph versus the entire paragraph.*/
 
-/*Pseudoselectors work for part of a content block, like the first line of the paragraph versus the entire paragraph.*/
-
-
+li::first-letter {
+  font-weight: bold;
+}
