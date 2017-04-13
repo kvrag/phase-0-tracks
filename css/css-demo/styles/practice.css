@@ -1,5 +1,17 @@
+section#contact-info {
+  font-size: .8em;
+}
 
+section.job {
+  background-color: #e9e5dc;
+  border-radius: 15px;
+  padding: 10px;
+  margin-top: 10px;
+}
 
+ul.accomplishments {
+  font-size: .8em;
+}
 
 
 /*"Cascading" means that styles can fall (or cascade) from one style sheet to another, enabling multiple style sheets to be used on one HTML document.*/
