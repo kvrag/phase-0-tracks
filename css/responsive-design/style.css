@@ -8,6 +8,15 @@
 
  */
 
+ /* Release 3: What is mobile-first design? -> Designing a website first with
+ /* regard to how it will appear on mobile, and considering desktop aesthetics
+ /* second. */
+
+/* Release 3: What is the float property and what are its benefits? 
+ -> The float property tells an element to line up on the left or right side of
+ its container. The benefit is that the other elements will wrap around it, so 
+ this is how you can place images with text wrapping around, for example. */
+
 @media screen and (max-width: 600px) {
   h1 {
     font-size: 1.5em;
@@ -22,6 +31,8 @@
 
 body {
   max-width: 960px;
+  margin: 0 auto;
+  background-color: lavender;
 }
 
 blockquote {
@@ -45,6 +56,8 @@ section#external-links {
   vertical-align: top;
   width: 200px;
   padding: 20px;
+  background-color: white;
+  border-radius: 20px;
 }
 
 main {
@@ -52,6 +65,8 @@ main {
   display: inline-block;
   vertical-align: top;
   padding: 20px;
+  background-color: white;
+  border-radius: 20px;
 }
 
 /* you're welcome to edit the
