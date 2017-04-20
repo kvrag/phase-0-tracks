@@ -1,0 +1,37 @@
+Algorithm for Using an Elevator
+
+Bellhop Robot
+- Stand inside the elevator, facing the doors.
+- For each person who enters the elevator:
+  - Ask the person which floor they want.
+  - Press the button displaying the corresponding floor number.
+  - Extend hand and cough.
+  - Put dollar bills in pocket.
+- When the elevator is empty of people:
+  - Press the button for the first floor.
+  - Wait for the next person to enter the elevator.
+  - Start over.
+
+Robot Patron in a Department Store
+- Look at store directory.
+- Locate the phrase "Robot Clothes" on directory.
+- Note the integer next to the phrase "Robot Clothes" and store it as Floor Number.
+- Locate the phrase "You Are Here" on directory.
+- Note the integer next to the phrase "You Are Here" and store it as Current Floor.
+- Maneuver to the elevator to the left of the directory.
+  - If Floor Number > Current Floor:
+    - Press the ^ (up) button.
+  - If Floor Number < Current Floor:
+    - Press the v (down) button.
+  - If Floor Number == Current Floor:
+    - Stay put.
+- When elevator doors open:
+  - Maneuver into the elevator.
+  - Turn to face the doors.
+  - Push the button with Floor Number on it.
+  - Push the >|< (close doors) button three times, rapidly.
+- When elevator doors close:
+  - Wait silently until doors open again.
+- When doors open again:
+  - Exit the elevator.
+  - End.
