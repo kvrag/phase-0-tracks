@@ -25,19 +25,19 @@ health_insurance = gets.chomp
 
 # Account for lazy or invalid answers to Y/N questions.
 
-case garlic_bread 
-if garlic_bread == "Y"
+garlic_bread.upcase 
+if (garlic_bread == "Y")
   garlic_bread = true
-elsif garlic_bread == "N"
+elsif (garlic_bread == "N")
   garlic_bread = false
 else
-  health_insurance = nil 
+  garlic_bread = nil 
 end 
 
-case health_insurance
-if health_insurance == "Y"
+health_insurance.upcase
+if (health_insurance == "Y")
   health_insurance = true
-elsif health_insurance == "N"
+elsif (health_insurance == "N")
   health_insurance = false
 else
   health_insurance = nil 
@@ -48,27 +48,43 @@ end
 
 alleged_age.to_i
 birth_year.to_i
-2017 - birth_year = real_age
+real_age = 2017 - birth_year
+real_age.to_i
 
-if real_age == birth_age
+if real_age == alleged_age 
   real_age = true
+else
+  real_age = false 
 end 
 
 # If the employee got their age right, and is willing to eat garlic bread 
 # OR sign up for insurance, the result is "Probably not a vampire."
 
+if (real_age && (garlic_bread || health_insurance))
+  puts "Probably not a vampire."
 
 # If the employee got their age wrong, and hates garlic bread OR waives
 # insurance, the result is "Probably a vampire."
 
+elsif ((real_age == false) && ((garlic_bread == false) || (health_insurance == false)))
+  puts "Probably a vampire."
 
 # If the employee got their age wrong, hates garlic bread, AND doesn't want
 # insurance, the result is "Almost certainly a vampire."
 
+elsif ((real_age == false) && (garlic_bread == false) && (health_insurance == false))
+  puts "Almost certainly a vampire."
+
 # Anyone going by the name of "Drake Cula" or "Tu Fang" is clearly a vampire.
 # In that case, print "Definitely a vampire." 
 
+elsif ((name == "Drake Cula") || (name == "Tu Fang"))
+  puts "Definitely a vampire."
 
 # Otherwise, print "Results inconclusive."
+
+else
+  puts "Results inconclusive."
+end 
 
 # Print the result at the end of the survey.
