@@ -6,14 +6,18 @@
 # For each space, do nothing to that space.
 # For example, 'the cat meows' would become 'ugf dbu nfpxt' 
 
-index = 0
-password = "the cat meows" 
+def encrypt(password)
+  index = 0
 
-while index < password.length
-  if password[index] == " "
-    print password[index]
-  else 
-    print password[index] = password[index].next
+  while index < password.length
+    if password[index] == " "
+      print password[index]
+    else 
+      print password[index] = password[index].next
+    end
+    index += 1
   end
-  index += 1
+
 end
+
+encrypt("the cat meows")
