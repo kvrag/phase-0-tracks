@@ -91,38 +91,38 @@ while number < employees.to_i
     wrong_age = true
   end 
   
+  # Decide whether the employee stinks of vampire.
+  # NOTE: Could not figure out how to make this work with the statements in the given order. Program worked if everything except the "else" was in reverse order. Why isn't this a valid solution?
   
-  # If the employee got their age right, and is willing to eat garlic bread 
-  # OR sign up for insurance, the result is "Probably not a vampire."
-  
-  if normal_name && right_age && (yes_garlic || yes_insurance)
-    puts "Probably not a vampire."
-  
-  # If the employee got their age wrong, and hates garlic bread OR waives
-  # insurance, the result is "Probably a vampire."
-  
-  elsif normal_name && wrong_age && (no_garlic || no_insurance)
-    puts "Probably a vampire."
+    # If the employee got their age right, and is willing to eat garlic bread 
+    # OR sign up for insurance, the result is "Probably not a vampire."
     
-  # If the employee got their age wrong, hates garlic bread, AND doesn't want
-  # insurance, the result is "Almost certainly a vampire."
-  
-  elsif normal_name && wrong_age && no_garlic && no_insurance
-    puts "Almost certainly a vampire."
-  
-  # Anyone going by the name of "Drake Cula" or "Tu Fang" is clearly a vampire.
-  # In that case, print "Definitely a vampire." 
-  
-  elsif vampire_name
-    puts "Definitely a vampire."
-  
-  # Otherwise, print "Results inconclusive."
-  
-  else
-    puts "Results inconclusive."
-  end 
-
-  # Print the result at the end of the survey.
+    if normal_name && right_age && (yes_garlic || yes_insurance)
+      puts "Probably not a vampire."
+    
+    # If the employee got their age wrong, and hates garlic bread OR waives
+    # insurance, the result is "Probably a vampire."
+    
+    elsif normal_name && wrong_age && (no_garlic || no_insurance)
+      puts "Probably a vampire."
+      
+    # If the employee got their age wrong, hates garlic bread, AND doesn't want
+    # insurance, the result is "Almost certainly a vampire."
+    
+    elsif normal_name && wrong_age && no_garlic && no_insurance
+      puts "Almost certainly a vampire."
+    
+    # Anyone going by the name of "Drake Cula" or "Tu Fang" is clearly a vampire.
+    # In that case, print "Definitely a vampire." 
+    
+    elsif vampire_name
+      puts "Definitely a vampire."
+    
+    # Otherwise, print "Results inconclusive."
+    
+    else
+      puts "Results inconclusive."
+    end 
 
 end
 
