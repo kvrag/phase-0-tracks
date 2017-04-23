@@ -25,11 +25,11 @@ while number < employees.to_i
     # Do they have a vampire name??
 
     if name == "Drake Cula"
-      vampire_name 
+      vampire_name = true
     elsif name == "Tu Fang"
-      vampire_name 
+      vampire_name = true
     else 
-      normal_name 
+      normal_name = true
     end 
   
   puts "How old are you?"
@@ -43,21 +43,35 @@ while number < employees.to_i
   
   puts "Would you like to enroll in the company's health insurance? (Y/N)"
   health_insurance = gets.chomp
+
+  # Add a loop to ask about allergies; if sunshine is an allergy, print "Probably a vampire."
+
+  puts "Do you have any allergies? List one at a time, then enter 'done' to exit."
+
+    allergy = ""
+    while allergy != "done"
+      allergy = gets.chomp
+      if allergy == "sunshine"
+        puts "Probably a vampire."
+        break
+        break
+      end
+    end
   
   # Account for lazy or invalid answers to Y/N questions.
   
   if garlic_bread.upcase == "Y"
-    yes_garlic 
+    yes_garlic = true
   elsif garlic_bread.upcase == "N"
-    no_garlic  
+    no_garlic = true
   else
     garlic_bread = nil 
   end 
   
   if health_insurance.upcase == "Y"
-    yes_insurance 
+    yes_insurance = true
   elsif health_insurance.upcase == "N"
-    no_insurance 
+    no_insurance = true
   else
     health_insurance = nil 
   end
@@ -68,9 +82,9 @@ while number < employees.to_i
   real_age = 2017 - birth_year.to_i
   
   if real_age == alleged_age.to_i 
-    right_age 
+    right_age = true
   else
-    wrong_age 
+    wrong_age = true
   end 
   
   
