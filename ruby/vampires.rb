@@ -7,9 +7,10 @@
 
 puts "How many employees are you processing today?"
 employees = gets.chomp
-employees.to_i
 
-employees.times do 
+number = 0
+while number < employees.to_i 
+  number += 1
 
   # Ask a new employee the following questions: 
   # What is your name? 
@@ -20,6 +21,16 @@ employees.times do
   
   puts "What is your name?"
   name = gets.chomp
+  
+    # Do they have a vampire name??
+
+    if name == "Drake Cula"
+      vampire_name 
+    elsif name == "Tu Fang"
+      vampire_name 
+    else 
+      normal_name 
+    end 
   
   puts "How old are you?"
   alleged_age = gets.chomp
@@ -35,20 +46,18 @@ employees.times do
   
   # Account for lazy or invalid answers to Y/N questions.
   
-  garlic_bread.upcase 
-  if (garlic_bread == "Y")
-    garlic_bread = true
-  elsif (garlic_bread == "N")
-    garlic_bread = false
+  if garlic_bread.upcase == "Y"
+    yes_garlic 
+  elsif garlic_bread.upcase == "N"
+    no_garlic  
   else
     garlic_bread = nil 
   end 
   
-  health_insurance.upcase
-  if (health_insurance == "Y")
-    health_insurance = true
-  elsif (health_insurance == "N")
-    health_insurance = false
+  if health_insurance.upcase == "Y"
+    yes_insurance 
+  elsif health_insurance.upcase == "N"
+    no_insurance 
   else
     health_insurance = nil 
   end
@@ -56,39 +65,37 @@ employees.times do
   # To check if the vampire is lying, determine if their age and birth year align.
   # We need a separate variable to store whether their "real age" checks out.
   
-  alleged_age.to_i
-  birth_year.to_i
-  real_age = 2017 - birth_year
-  real_age.to_i
+  real_age = 2017 - birth_year.to_i
   
-  if real_age == alleged_age 
-    real_age = true
+  if real_age == alleged_age.to_i 
+    right_age 
   else
-    real_age = false 
+    wrong_age 
   end 
+  
   
   # If the employee got their age right, and is willing to eat garlic bread 
   # OR sign up for insurance, the result is "Probably not a vampire."
   
-  if (real_age && (garlic_bread || health_insurance))
+  if normal_name && right_age && (yes_garlic || yes_insurance)
     puts "Probably not a vampire."
   
   # If the employee got their age wrong, and hates garlic bread OR waives
   # insurance, the result is "Probably a vampire."
   
-  elsif ((real_age == false) && ((garlic_bread == false) || (health_insurance == false)))
+  elsif normal_name && wrong_age && (no_garlic || no_insurance)
     puts "Probably a vampire."
-  
+    
   # If the employee got their age wrong, hates garlic bread, AND doesn't want
   # insurance, the result is "Almost certainly a vampire."
   
-  elsif ((real_age == false) && (garlic_bread == false) && (health_insurance == false))
+  elsif normal_name && wrong_age && no_garlic && no_insurance
     puts "Almost certainly a vampire."
   
   # Anyone going by the name of "Drake Cula" or "Tu Fang" is clearly a vampire.
   # In that case, print "Definitely a vampire." 
   
-  elsif ((name == "Drake Cula") || (name == "Tu Fang"))
+  elsif vampire_name
     puts "Definitely a vampire."
   
   # Otherwise, print "Results inconclusive."
@@ -100,3 +107,5 @@ employees.times do
   # Print the result at the end of the survey.
 
 end
+
+puts "Actually, never mind! What do these questions have to do with anything? Let's all be friends."
