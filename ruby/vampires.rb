@@ -51,12 +51,16 @@ while number < employees.to_i
     allergy = ""
     while allergy != "done"
       allergy = gets.chomp
-      if allergy == "sunshine"
+      next unless allergy == "sunshine"
         puts "Probably a vampire."
-        break
-        break
-      end
+        allergy = "done"
+        skip_to_end = true
     end
+
+      if skip_to_end
+        next
+      end
+
   
   # Account for lazy or invalid answers to Y/N questions.
   
