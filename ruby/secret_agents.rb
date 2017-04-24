@@ -20,4 +20,25 @@ def encrypt(password)
 
 end
 
-encrypt("the cat meows")
+# Find out where a letter is in the alphabet
+  # alphabet.index(password[index_variable])
+
+# Access the letter right before it
+
+def decrypt(password)
+  index = 0
+  alphabet = "abcdefghijklmnopqrstuvwxyz" 
+
+  while index < password.length
+    if password[index] == " "
+      print password[index] 
+    else
+      alpha_index = (alphabet.index(password[index]) - 1)
+      print alphabet[alpha_index]
+    end
+    index += 1
+  end 
+
+end
+
+decrypt("ruby is absurd")
