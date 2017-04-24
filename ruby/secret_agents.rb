@@ -70,4 +70,5 @@ until valid_input
 end
 
 # decrypt(encrypt("swordfish"))
+# This works because encrypt outputs a string that decrypt can then accept as input.
 
