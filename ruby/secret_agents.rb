@@ -47,27 +47,27 @@ end
 
 
 
-# valid_input = false 
-# until valid_input 
+valid_input = false 
+until valid_input 
 
-#   puts "Do you want to encrypt, or decrypt?"
-#   chosen_method = gets.chomp 
+  puts "Do you want to encrypt, or decrypt?"
+  chosen_method = gets.chomp 
 
-#   if chosen_method == "encrypt"
-#     valid_input = true
-#     puts "Enter the password."
-#     password = gets.chomp 
-#     puts encrypt(password) 
-#   elsif chosen_method == "decrypt"
-#     valid_input = true 
-#     puts "Enter the password."
-#     password = gets.chomp 
-#     puts decrypt(password)
-#   else
-#     puts "What was that? Please type 'encrypt' or 'decrypt'."
-#   end
+  if chosen_method == "encrypt"
+    valid_input = true
+    puts "Enter the password."
+    password = gets.chomp 
+    encrypt(password) 
+  elsif chosen_method == "decrypt"
+    valid_input = true 
+    puts "Enter the password."
+    password = gets.chomp 
+    decrypt(password)
+  else
+    puts "What was that? Please type 'encrypt' or 'decrypt'."
+  end
 
-# end
+end
 
-decrypt(encrypt("swordfish"))
+# decrypt(encrypt("swordfish"))
 
