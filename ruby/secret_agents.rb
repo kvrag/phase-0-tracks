@@ -12,6 +12,8 @@ def encrypt(password)
   while index < password.length
     if password[index] == " "
       print password[index]
+    elsif password[index] == "z"
+      print "a"
     else 
       print password[index] = password[index].next
     end
@@ -41,4 +43,30 @@ def decrypt(password)
 
 end
 
-decrypt("ruby is absurd")
+
+def enter_password
+  puts "Enter the password."
+  password = gets.chomp 
+end
+
+
+valid_input = false 
+until valid_input 
+
+  puts "Do you want to encrypt, or decrypt?"
+  chosen_method = gets.chomp 
+
+  if chosen_method == "encrypt"
+    valid_input = true
+    enter_password
+    puts encrypt(password) 
+  elsif chosen_method == "decrypt"
+    valid_input = true 
+    enter_password
+    puts decrypt(password)
+  else
+    puts "What was that? Please type 'encrypt' or 'decrypt'."
+  end
+
+end
+
