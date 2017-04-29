@@ -21,10 +21,10 @@
 #2. For each name (first, last), change all vowels to the next vowel in 'aeiou'
 # => Use .chars to divide name into array of characters
 # => Use .map! do method to iterate through characters
-# => If a vowel, use .gsub to define pattern /[aeiou]/ and .next to change vowels 
+# => If a vowel, use .gsub to define pattern /[aeiou]/ and .next to change vowels? 
 
 #3. For each name (first, last), change all consonants to next consonant 
-# => If a consonant, use .gsub to define pattern /[bcdfghjklmnpqrstvwxyz]/ and .next to change consonants 
+# => If a consonant, use .gsub to define pattern /[bcdfghjklmnpqrstvwxyz]/ and .next to change consonants? 
 # => Close .map! do method
 # => Use .join('') to put chars back together into a string for each name
 
@@ -66,15 +66,25 @@ def encode_name(full_name)
   code_name.join(' ')
 
 end
-
+ 
 
 # USER INTERFACE
 # Let the user enter a name and get a fake name back, repeatedly, until they decide to quit by typing 'quit'.
 
+# STORE THE ALIASES
+# Use a data structure to store the fake names as they are entered. When the user exits the program, iterate through the data structure and print all the data the user entered.
+
+alias_data = {}
+
 loop do 
-  puts "Enter a name to encode (or type 'quit' to exit):"
+  puts "Enter a name to encode (or type 'quit'):"
   inputted_phrase = gets.chomp
-  break if inputted_phrase == "quit" 
-  puts "Your code name is #{encode_name(inputted_phrase)}!"
+  break if inputted_phrase == "quit"  
+  alias_data[inputted_phrase] = encode_name(inputted_phrase)
+  puts "Code name: #{encode_name(inputted_phrase)}"
+end
+
+alias_data.each do |full_name, code_name|
+  puts "#{full_name} is also known as #{code_name}."
 end
 
