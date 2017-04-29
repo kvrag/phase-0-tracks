@@ -48,7 +48,7 @@ consonants = letters - vowels
 
 
 
-code_name = reverse_name.chars.map! do |letter|
+coded_letters = reverse_name.chars.map! do |letter|
   if vowels.include? letter
     vowels[vowels.index(letter) + 1]
   elsif 
@@ -59,9 +59,12 @@ code_name = reverse_name.chars.map! do |letter|
   end
 end
 
-code_name.join(' ').capitalize!
+code_name = coded_letters.join('').split(' ')
 
-p code_name
+code_name[0].capitalize!
+code_name[1].capitalize! 
+
+p code_name.join(' ') 
 
 
 
