@@ -29,44 +29,52 @@
 # => Use .join('') to put chars back together into a string for each name
 
 
-#1
+def encode_name(full_name)
 
-full_name = "Felicia Torres"
-reverse_name = full_name.split(' ').reverse!.join(' ')
-# Full name is now reversed and is a two-word string
+  reverse_name = full_name.split(' ').reverse!.join(' ')
+  # Full name is now reversed and is a two-word string
 
-reverse_name.downcase! 
-# Reversed name is now downcased for encrypting. 
+  reverse_name.downcase! 
+  # Reversed name is now downcased for encrypting. 
 
-#2
 
-alpha = "abcdefghijklmnopqrstuvwxyz"
-letters = alpha.split('')
+  alpha = "abcdefghijklmnopqrstuvwxyz"
+  letters = alpha.split('')
 
-vowels = ['a', 'e', 'i', 'o', 'u']
-consonants = letters - vowels 
+  vowels = ['a', 'e', 'i', 'o', 'u']
+  consonants = letters - vowels 
 
 
 
-coded_letters = reverse_name.chars.map! do |letter|
-  if vowels.include? letter
-    vowels[vowels.index(letter) + 1]
-  elsif 
-    consonants.include? letter 
-    consonants[consonants.index(letter) + 1] 
-  else
-    letter 
+  coded_letters = reverse_name.chars.map! do |letter|
+    if vowels.include? letter
+      vowels[vowels.index(letter) + 1]
+    elsif 
+      consonants.include? letter 
+      consonants[consonants.index(letter) + 1] 
+    else
+      letter 
+    end
   end
+
+  code_name = coded_letters.join('').split(' ')
+
+  code_name.map! do |name|
+    name.capitalize!
+  end 
+  
+  code_name.join(' ')
+
 end
 
-code_name = coded_letters.join('').split(' ')
 
-code_name[0].capitalize!
-code_name[1].capitalize! 
+# USER INTERFACE
+# Let the user enter a name and get a fake name back, repeatedly, until they decide to quit by typing 'quit'.
 
-p code_name.join(' ') 
-
-
-
-
+loop do 
+  puts "Enter a name to encode (or type 'quit' to exit):"
+  inputted_phrase = gets.chomp
+  break if inputted_phrase == "quit" 
+  puts "Your code name is #{encode_name(inputted_phrase)}!"
+end
 
