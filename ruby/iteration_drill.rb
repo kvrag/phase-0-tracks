@@ -20,21 +20,18 @@ end
 # zombie_apocalypse_supplies. Do not use any special built-in methods.
 # For instance: are boots in your list of supplies?
 # ----
-def supply_search(item_query)
+puts "What item are you checking for?"
+item_query = gets.chomp
+
   zombie_apocalypse_supplies.each do |supply|
     if supply == item_query
       p "Yes, #{item_query} is in supply."
+      break
     else
       p "Nope - better stock up on #{item_query}."
+      break
     end
   end
-end
-
-puts "What item are you checking for?"
-item = gets.chomp
-puts supply_search(item)
-
-
 
 
 # 4. You can't carry too many things, you've only got room in your pack for 5.
