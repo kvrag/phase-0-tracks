@@ -7,8 +7,7 @@ zombie_apocalypse_supplies = ["hatchet", "rations", "water jug", "binoculars",
 # printing each item in the array separated by an asterisk
 # ----
 zombie_apocalypse_supplies.each do |supply|
-  puts "#{supply}"
-  puts "*"
+  puts " * #{supply}"
 end
 
 # 2. In order to keep yourself organized, sort your zombie_apocalypse_supplies
@@ -60,6 +59,7 @@ other_survivor_supplies = [ "warm clothes", "rations", "compass", "camp stove",
 combined_supplies = zombie_apocalypse_supplies | other_survivor_supplies
 p combined_supplies
 
+
 # Hash Drills
 
 extinct_animals = {
@@ -75,6 +75,10 @@ extinct_animals = {
 # 1. Iterate through extinct_animals hash, printing each key/value pair
 # with a dash in between the key and value, and an asterisk between each pair.
 # ----
+
+extinct_animals.each do |animal, year|
+  puts " * #{animal} - #{year}"
+end
 
 # 2. Keep only animals in extinct_animals if they were extinct before
 # the year 2000. Do not use any special built-in methods.
