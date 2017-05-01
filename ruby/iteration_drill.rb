@@ -57,7 +57,7 @@ other_survivor_supplies = [ "warm clothes", "rations", "compass", "camp stove",
 # ----
 
 combined_supplies = zombie_apocalypse_supplies | other_survivor_supplies
-p combined_supplies
+
 
 
 # Hash Drills
@@ -84,11 +84,21 @@ end
 # the year 2000. Do not use any special built-in methods.
 # ----
 
+extinct_animals.each do |animal, year| 
+  if year >= 2000
+    extinct_animals.delete(animal)
+  end
+end
+
 # 3. Our calculations were completely off, turns out all of those animals went
 # extinct 3 years before the date provided. Update the values in extinct_animals
 # so they accurately reflect what year the animal went extinct.
 # Do not use any special built-in methods.
 # ----
+
+extinct_animals.each do |animal, year| 
+  extinct_animals[animal] = year - 3
+end
 
 # 4. You've heard that the following animals might be extinct, but you're not sure.
 # Check if they're included in extinct_animals, one by one:
