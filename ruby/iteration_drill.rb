@@ -16,28 +16,37 @@ end
 # ----
 
 
+
 # 3. Create a method to see if a particular item (string) is in the
 # zombie_apocalypse_supplies. Do not use any special built-in methods.
 # For instance: are boots in your list of supplies?
 # ----
-puts "What item are you checking for?"
-item_query = gets.chomp
 
-  zombie_apocalypse_supplies.each do |supply|
-    if supply == item_query
-      p "Yes, #{item_query} is in supply."
+def supply_search(supply_list, item)
+index = 0
+  while index < supply_list.length
+    if supply_list[index] == item
+      puts "IT\'S HERE!"
       break
-    else
-      p "Nope - better stock up on #{item_query}."
-      break
+    elsif
+      print "Not here... "
     end
-  end
+  index += 1
+  end 
+end
+
+puts "What item are you checking for?"
+input = gets.chomp
+supply_search(zombie_apocalypse_supplies, input)
 
 
 # 4. You can't carry too many things, you've only got room in your pack for 5.
 # Remove items in your zombie_apocalypse_supplies in any way you'd like,
 # leaving only 5. Do not use any special built-in methods.
 # ----
+
+zombie_apocalypse_supplies = zombie_apocalypse_supplies - ["shotgun", "CB radio", "batteries"]
+p zombie_apocalypse_supplies
 
 # 5. You found another survivor! This means you can combine your supplies.
 # Create a new combined supplies list out of your zombie_apocalypse_supplies
@@ -47,6 +56,9 @@ item_query = gets.chomp
 other_survivor_supplies = [ "warm clothes", "rations", "compass", "camp stove",
                             "solar battery", "flashlight"]
 # ----
+
+combined_supplies = zombie_apocalypse_supplies | other_survivor_supplies
+p combined_supplies
 
 # Hash Drills
 
