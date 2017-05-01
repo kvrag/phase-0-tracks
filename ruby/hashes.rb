@@ -52,9 +52,17 @@ client_profile.each do |label, input|
   puts "#{label}: #{input}"
 end
 
-# puts "Enter a label to make changes, or type 'none' to quit."
-# label = gets.chomp
-#   if label == "none"
-#     next
-#   else
-#     label.to_sym
+puts "Enter a label to make changes, or type 'none' to quit."
+label = gets.chomp
+  if label == "none"
+    puts "Have a great day!" 
+  else
+    puts "Enter the new information."
+    client_profile[label.to_sym] = gets.chomp 
+
+    puts "New client profile: "
+    client_profile.each do |label, input|
+      puts "#{label}: #{input}"
+    end
+    puts "Have a great day!" 
+  end
