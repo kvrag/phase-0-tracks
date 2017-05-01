@@ -45,7 +45,7 @@ supply_search(zombie_apocalypse_supplies, input)
 # ----
 
 zombie_apocalypse_supplies = zombie_apocalypse_supplies - ["shotgun", "CB radio", "batteries"]
-p zombie_apocalypse_supplies
+
 
 # 5. You found another survivor! This means you can combine your supplies.
 # Create a new combined supplies list out of your zombie_apocalypse_supplies
@@ -108,8 +108,26 @@ end
 # Do not use any special built-in methods.
 # ----
 
+extinct_animals.each do |animal| 
+  if animal == "Andean Cat" 
+    print "Andean Cat is extinct."
+    break
+  elsif animal == "Dodo"
+    print "Dodo is extinct."
+    break
+  elsif animal == "Saiga Antelope"
+    print "Saiga Antelope is extinct."
+    break
+  else
+    print "Not extinct!"
+    break
+  end
+end
+
 # 5. We just found out that the Passenger Pigeon is actually not extinct!
 # Remove them from extinct_animals and return the key value pair as a two item array.
 # Find the built-in method that helps you accomplish this in the Ruby documentation
 # for Hashes.
 # ----
+
+
