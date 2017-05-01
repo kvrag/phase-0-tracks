@@ -14,6 +14,8 @@ end
 # in alphabetical order. Do not use any special built-in methods.
 # ----
 
+zombie_apocalypse_supplies = ["batteries", "binoculars", "CB radio", "compass", "hatchet", "rations", "shotgun", "water jug"]  
+# Hit a wall / ran outta time with this one. But hey, I didn't use a built-in method!
 
 
 # 3. Create a method to see if a particular item (string) is in the
@@ -28,7 +30,7 @@ index = 0
       puts "IT\'S HERE!"
       break
     elsif
-      print "Not here... "
+      puts "Not here... "
     end
   index += 1
   end 
@@ -89,6 +91,7 @@ extinct_animals.each do |animal, year|
     extinct_animals.delete(animal)
   end
 end
+# p extinct_animals
 
 # 3. Our calculations were completely off, turns out all of those animals went
 # extinct 3 years before the date provided. Update the values in extinct_animals
@@ -99,6 +102,7 @@ end
 extinct_animals.each do |animal, year| 
   extinct_animals[animal] = year - 3
 end
+# p extinct_animals
 
 # 4. You've heard that the following animals might be extinct, but you're not sure.
 # Check if they're included in extinct_animals, one by one:
@@ -108,21 +112,21 @@ end
 # Do not use any special built-in methods.
 # ----
 
-extinct_animals.each do |animal| 
+extinct_animals.each_key do |animal, year| 
   if animal == "Andean Cat" 
-    print "Andean Cat is extinct."
+    puts "Andean Cat is extinct."
     break
   elsif animal == "Dodo"
-    print "Dodo is extinct."
+    puts "Dodo is extinct."
     break
   elsif animal == "Saiga Antelope"
-    print "Saiga Antelope is extinct."
+    puts "Saiga Antelope is extinct."
     break
   else
-    print "Not extinct!"
-    break
+    puts "Not extinct."
   end
 end
+
 
 # 5. We just found out that the Passenger Pigeon is actually not extinct!
 # Remove them from extinct_animals and return the key value pair as a two item array.
@@ -130,4 +134,8 @@ end
 # for Hashes.
 # ----
 
+not_extinct = extinct_animals.select {|key, value| ["Passenger Pigeon"].include?(key) }
+extinct_animals = Hash[extinct_animals.to_a - not_extinct.to_a] 
 
+# p extinct_animals 
+p not_extinct.flatten 
