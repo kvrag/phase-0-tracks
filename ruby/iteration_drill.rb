@@ -14,6 +14,8 @@ end
 # in alphabetical order. Do not use any special built-in methods.
 # ----
 
+zombie_apocalypse_supplies = ["batteries", "binoculars", "CB radio", "compass", "hatchet", "rations", "shotgun", "water jug"]  
+# Hit a wall / ran outta time with this one. But hey, I didn't use a built-in method!
 
 
 # 3. Create a method to see if a particular item (string) is in the
@@ -28,7 +30,7 @@ index = 0
       puts "IT\'S HERE!"
       break
     elsif
-      print "Not here... "
+      puts "Not here... "
     end
   index += 1
   end 
@@ -89,6 +91,7 @@ extinct_animals.each do |animal, year|
     extinct_animals.delete(animal)
   end
 end
+p extinct_animals
 
 # 3. Our calculations were completely off, turns out all of those animals went
 # extinct 3 years before the date provided. Update the values in extinct_animals
@@ -108,21 +111,21 @@ end
 # Do not use any special built-in methods.
 # ----
 
-extinct_animals.each do |animal| 
-  if animal == "Andean Cat" 
-    print "Andean Cat is extinct."
+extinct_animals.each do |animal, year| 
+  if extinct_animals[animal] == "Andean Cat" 
+    puts "Andean Cat is extinct."
     break
-  elsif animal == "Dodo"
-    print "Dodo is extinct."
+  elsif extinct_animals[animal] == "Dodo"
+    puts "Dodo is extinct."
     break
-  elsif animal == "Saiga Antelope"
-    print "Saiga Antelope is extinct."
+  elsif extinct_animals[animal] == "Saiga Antelope"
+    puts "Saiga Antelope is extinct."
     break
   else
-    print "Not extinct!"
-    break
+    puts "Not extinct."
   end
 end
+
 
 # 5. We just found out that the Passenger Pigeon is actually not extinct!
 # Remove them from extinct_animals and return the key value pair as a two item array.
