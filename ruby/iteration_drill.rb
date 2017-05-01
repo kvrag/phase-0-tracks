@@ -111,7 +111,7 @@ end
 # Do not use any special built-in methods.
 # ----
 
-extinct_animals.each do |animal, year| 
+extinct_animals.each_key do |animal| 
   if extinct_animals[animal] == "Andean Cat" 
     puts "Andean Cat is extinct."
     break
@@ -133,4 +133,8 @@ end
 # for Hashes.
 # ----
 
+not_extinct = extinct_animals.select {|key, value| ["Passenger Pigeon"].include?(key) }
+extinct_animals = Hash[extinct_animals.to_a - not_extinct.to_a] 
 
+p extinct_animals 
+p not_extinct.flatten 
