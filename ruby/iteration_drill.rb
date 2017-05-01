@@ -91,7 +91,7 @@ extinct_animals.each do |animal, year|
     extinct_animals.delete(animal)
   end
 end
-p extinct_animals
+# p extinct_animals
 
 # 3. Our calculations were completely off, turns out all of those animals went
 # extinct 3 years before the date provided. Update the values in extinct_animals
@@ -102,6 +102,7 @@ p extinct_animals
 extinct_animals.each do |animal, year| 
   extinct_animals[animal] = year - 3
 end
+# p extinct_animals
 
 # 4. You've heard that the following animals might be extinct, but you're not sure.
 # Check if they're included in extinct_animals, one by one:
@@ -111,14 +112,14 @@ end
 # Do not use any special built-in methods.
 # ----
 
-extinct_animals.each_key do |animal| 
-  if extinct_animals[animal] == "Andean Cat" 
+extinct_animals.each_key do |animal, year| 
+  if animal == "Andean Cat" 
     puts "Andean Cat is extinct."
     break
-  elsif extinct_animals[animal] == "Dodo"
+  elsif animal == "Dodo"
     puts "Dodo is extinct."
     break
-  elsif extinct_animals[animal] == "Saiga Antelope"
+  elsif animal == "Saiga Antelope"
     puts "Saiga Antelope is extinct."
     break
   else
@@ -136,5 +137,5 @@ end
 not_extinct = extinct_animals.select {|key, value| ["Passenger Pigeon"].include?(key) }
 extinct_animals = Hash[extinct_animals.to_a - not_extinct.to_a] 
 
-p extinct_animals 
+# p extinct_animals 
 p not_extinct.flatten 
