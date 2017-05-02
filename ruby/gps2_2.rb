@@ -15,23 +15,16 @@ def create_list(item_list)
   grocery_list 
 end 
 
-example_list = "carrots apples cereal pizza"
-
-grocery_list = create_list(example_list)
-p grocery_list 
-
-
 # Method to add an item to a list
 # input: list, item name, and optional quantity
 # steps: Add the item to the list of keys in the hash
 # output: Print the list with the addition
 
-def add_item_to_list(grocery_list, item)
-  grocery_list[item] = 1 
+def add_item_to_list(grocery_list, item, quantity)
+  grocery_list[item] = quantity 
   grocery_list
 end
 
-p add_item_to_list(grocery_list, "potatoes")
 
 # Method to remove an item from the list
 # input: list, item name, and optional quantity
@@ -43,7 +36,6 @@ def remove_item_from_list(grocery_list, item)
   grocery_list 
 end 
 
-p remove_item_from_list(grocery_list, "potatoes")
 
 # Method to update the quantity of an item
 # input: list, item, quantity
@@ -55,7 +47,6 @@ def update_quantity(grocery_list, item, quantity)
   grocery_list
 end 
 
-p update_quantity(grocery_list, "carrots", 5)
 
 # Method to print a list and make it look pretty
 # input: name of the hash
@@ -69,4 +60,17 @@ def print_finished_list(grocery_list)
   end
 end 
 
+
+# USER INTERFACE
+
+puts "What items do you need to buy? Type a list separated by spaces."
+list_input = gets.chomp
+grocery_list = create_list(list_input)
 print_finished_list(grocery_list)
+
+can_add_items = true 
+
+while can_add_items 
+  puts "Input another item if you forgot something. Otherwise type 'done'."
+
+
