@@ -7,10 +7,11 @@
 
 def create_list(item_list)
   list_arr = item_list.split(' ')
+
   grocery_list = {}
 
   list_arr.each do |item|
-    grocery_list[item] = 1
+    grocery_list[item] = nil
   end 
   grocery_list 
 end 
@@ -20,11 +21,10 @@ end
 # steps: Add the item to the list of keys in the hash
 # output: Print the list with the addition
 
-def add_item_to_list(grocery_list, item, quantity)
-  grocery_list[item] = quantity 
+def add_item_to_list(grocery_list, item)
+  grocery_list[item] = nil 
   grocery_list
 end
-
 
 # Method to remove an item from the list
 # input: list, item name, and optional quantity
@@ -36,7 +36,6 @@ def remove_item_from_list(grocery_list, item)
   grocery_list 
 end 
 
-
 # Method to update the quantity of an item
 # input: list, item, quantity
 # steps: change quantity (value) of item, convert string to integer
@@ -47,17 +46,18 @@ def update_quantity(grocery_list, item, quantity)
   grocery_list
 end 
 
-
 # Method to print a list and make it look pretty
 # input: name of the hash
 # steps: print value and key
 # output: printed list
 
 def print_finished_list(grocery_list)
+  puts "----------------------"
   puts "Here is your grocery list: "
   grocery_list.each do |item, quantity|
     puts "Buy #{quantity} #{item}" 
   end
+  puts "----------------------"
 end 
 
 
@@ -68,9 +68,29 @@ list_input = gets.chomp
 grocery_list = create_list(list_input)
 print_finished_list(grocery_list)
 
-can_add_items = true 
+loop do 
+  puts "Type another item to add, or type 'done'."
+  item = gets.chomp
+  break if item == 'done' 
+  add_item_to_list(grocery_list, item)
+  print_finished_list(grocery_list)
+end 
 
-while can_add_items 
-  puts "Input another item if you forgot something. Otherwise type 'done'."
+loop do 
+  puts "Type the name of an item to update its quantity (or type 'done')."
+  item = gets.chomp 
+  break if item == 'done' 
+  puts "Enter the new quantity: "
+  quantity = gets.chomp 
+    if quantity == '0'
+      remove_item_from_list(grocery_list, item)
+    else
+    update_quantity(grocery_list, item, quantity)
+    end 
+  print_finished_list(grocery_list)
+end 
 
+
+print_finished_list(grocery_list)
+puts "Whew!" 
 
