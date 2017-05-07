@@ -28,7 +28,8 @@ class Santa
   end
 
   def get_mad_at(reindeer_name)
-    something with @reindeer_ranking
+    @reindeer_ranking.delete_at(@reindeer_ranking.index(reindeer_name))
+    @reindeer_ranking.insert(-1, reindeer_name)
   end
 
   # setter methods
@@ -58,7 +59,8 @@ p santas
 
 
 #-------TEST CODE-------------------------
-# santa1 = Santa.new
+# santa1 = Santa.new("female", "black")
+# p santa1.get_mad_at("Dancer")
 # santa1.speak
 # santa1.eat_milk_and_cookies("M&M cookie")
 
