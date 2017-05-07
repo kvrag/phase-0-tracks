@@ -23,12 +23,45 @@ class Santa
     puts "Age: #{@age}"
   end
 
+  # getter methods
+  def age
+    @age
+  end
+
+  def ethnicity
+    @ethnicity
+  end
+
+  # setter methods
+  def celebrate_birthday
+    @age + 1
+  end
+
+  def get_mad_at(reindeer_name)
+    something with @reindeer_ranking
+  end
+
+  def gender=(new_gender)
+    @gender = new_gender
+  end
 end
 
+
+santas = []
+santas << Santa.new("female", "latinx")
+santas << Santa.new("male", "black")
+santas << Santa.new("agender", "white")
+santas << Santa.new("gender fluid", "Pacific islander")
+
+p santas 
+
+
+
+#-------TEST CODE-------------------------
 # santa1 = Santa.new
 # santa1.speak
 # santa1.eat_milk_and_cookies("M&M cookie")
 
-santa1 = Santa.new("female", "latina")
-
-santa1.about 
+# santa1 = Santa.new("female", "latina")
+# santa1.about 
+#-----------------------------------------
