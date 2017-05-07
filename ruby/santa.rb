@@ -23,16 +23,6 @@ class Santa
     puts "Age: #{@age}"
   end
 
-  # getter methods
-  def age
-    @age
-  end
-
-  def ethnicity
-    @ethnicity
-  end
-
-  # setter methods
   def celebrate_birthday
     @age + 1
   end
@@ -41,8 +31,18 @@ class Santa
     something with @reindeer_ranking
   end
 
+  # setter methods
   def gender=(new_gender)
     @gender = new_gender
+  end
+
+  # getter methods
+  def age
+    @age
+  end
+
+  def ethnicity
+    @ethnicity
   end
 end
 
