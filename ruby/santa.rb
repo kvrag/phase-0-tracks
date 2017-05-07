@@ -1,6 +1,6 @@
 class Santa
-  attr_reader :age, :ethnicity 
-  attr_accessor :gender 
+  attr_reader :ethnicity 
+  attr_accessor :age, :gender 
 
   def speak
     puts "Ho, ho, ho! Haaaappy holidays!"
@@ -33,16 +33,52 @@ class Santa
     @reindeer_ranking.delete_at(@reindeer_ranking.index(reindeer_name))
     @reindeer_ranking.insert(-1, reindeer_name)
   end
+
+# getter methods 
+  # def age
+  #   @age
+  # end
+
+  # def ethnicity 
+  #   @ethnicity
+  # end 
+
+# setter method
+  # def gender=(new_gender)
+  #   @gender = new_gender 
+  # end
 end
 
 
-santas = []
-santas << Santa.new("female", "latinx")
-santas << Santa.new("male", "black")
-santas << Santa.new("agender", "white")
-santas << Santa.new("gender fluid", "Pacific islander")
+# create arrays for example genders and example ethnicities
 
-p santas 
+example_genders = ["agender", "female", "bigender", "male", "female", "gender fluid", "N/A"]
+example_ethnicities = ["black", "Latino", "white", "Japanese-African", "prefer not to say", "Mystical Creature (unicorn)", "N/A"]
+
+# make lots of Santas
+
+
+puts "How many Santas?"
+number_of_santas = gets.chomp.to_i 
+
+santas = []
+
+number_of_santas.times do
+  santas << Santa.new(example_genders.sample, example_ethnicities.sample)
+end
+
+# assign each Santa's age to a random number between 0 and 140
+
+santas.each do |santa|
+  santa.age = rand(0..140)
+  santas 
+end
+
+# print attributes of each Santa using instance methods
+
+santas.each do |santa|
+  santa.about
+end 
 
 
 
