@@ -9,7 +9,7 @@
 class WordGame
   def initialize(user_input)
     @user_input = user_input 
-    @correct_answer = []
+    @correct_answer = @user_input.chars 
     @track_progress = []
     @guess_count = 0 
   end
@@ -95,6 +95,13 @@ class WordGame
 #     - YIELD to full-word guess method
 #  - Output: boolean - correct/not correct
 
+  def letter_correct(user_guess)
+    if @correct_answer.include?(user_guess)
+      letter_correct = true
+    else
+      letter_correct = false
+    end
+  end 
 
 # Check if a full-word guess is correct/incorrect
 #  - Input: a string of more than one letter
@@ -119,7 +126,9 @@ class WordGame
 end
 
 
-
+# game = WordGame.new("unicorn")
+# p game.store_answer
+# p game.letter_correct("c")
 
 
 

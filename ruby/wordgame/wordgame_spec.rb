@@ -20,7 +20,7 @@ describe WordGame do
   end
 
   it "checks if a one-letter guess is correct" do 
-    # expect(game.letter_correct("c")).to eq true 
+    expect(game.letter_correct("c")).to eq true 
   end 
 
   it "checks if a full-word guess is correct" do
