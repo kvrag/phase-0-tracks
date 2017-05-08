@@ -72,12 +72,6 @@ class WordGame
     @full_word 
   end 
 
-end
-
-
-
-
-
 # Check if a one-letter guess is correct/incorrect
 #  - Input: one letter
 #  - WHILE guesses <= allowed number:
@@ -101,6 +95,7 @@ end
 #     - YIELD to full-word guess method
 #  - Output: boolean - correct/not correct
 
+
 # Check if a full-word guess is correct/incorrect
 #  - Input: a string of more than one letter
 #  - Establish that win is not true
@@ -111,3 +106,21 @@ end
 #     - IF otherwise:
 #       - win is not true
 #  - Output: boolean - win/not win
+
+  def word_correct(user_guess)
+    if user_guess == @user_input 
+      word_correct = true
+    else
+      word_correct = false
+    end
+  end
+
+
+end
+
+
+
+
+
+
+
