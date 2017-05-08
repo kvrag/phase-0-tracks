@@ -1,5 +1,5 @@
 
-# WORD GAME PSEUDOCODE 
+#----PSEUDOCODE---------------
 
 # Initialize the game
 #  - Create empty correct-answer array
@@ -12,28 +12,6 @@
 #  - Store underscores, the same number as correct-answer letters, to progress array
 #  - Output: array - progress (underscores)
 
-class WordGame
-  attr_reader :track_progress 
-
-  def initialize(user_input)
-    @user_input = user_input 
-    @correct_answer = [] 
-    @track_progress = []
-    @guess_count = 0 
-  end
-
-  def store_answer
-    @correct_answer = @user_input.chars 
-    @correct_answer 
-  end 
-
-  def progress
-    @user_input.length.times do
-      @track_progress << "_" 
-    end 
-    @track_progress
-  end
-
 # Determine the number of guesses allowed
 #  - Input: number of letters in the correct-answer array
 #  - If the number of letters is less than 7:
@@ -44,17 +22,6 @@ class WordGame
 #     - the allowed number of guesses is 6
 #  - Output: integer - allowed number of guesses
 
-  def guesses_allowed
-    if @user_input.length < 7
-      @allowed_guesses = 4
-    elsif @user_input.length > 10
-      @allowed_guesses = 6
-    else 
-      @allowed_guesses = 5
-    end 
-    @allowed_guesses 
-  end 
-
 # Determine whether to run the one-letter guess method or the full-word guess method
 #  - Input: string of one or more letters
 #  - IF the string is more than one letter:
@@ -64,15 +31,6 @@ class WordGame
 #     - full word is not true
 #     - Run the method for a one-letter guess
 #  - Output: boolean - full word/not full word
-
-  def full_word(user_guess)
-    if user_guess.length == 1
-      @full_word = false
-    elsif user_guess.length > 1
-      @full_word = true
-    end
-    @full_word 
-  end 
 
 # Check if a one-letter guess is correct/incorrect
 #  - Input: one letter
@@ -97,10 +55,66 @@ class WordGame
 #     - YIELD to full-word guess method
 #  - Output: boolean - correct/not correct
 
+# Check if a full-word guess is correct/incorrect
+#  - Input: a string of more than one letter
+#  - Establish that win is not true
+#  - Divide input string into an array of letters
+#  - Compare this array to the correct-answer array
+#     - IF the arrays match:
+#       - win is true 
+#     - IF otherwise:
+#       - win is not true
+#  - Output: boolean - win/not win
+
+
+#----BUSINESS LOGIC---------------
+
+class WordGame
+  attr_reader :track_progress, :guess_count, :full_word, :word_correct, :letter_correct, :allowed_guesses   
+
+  def initialize(user_input)
+    @user_input = user_input 
+    @correct_answer = [] 
+    @track_progress = []
+    @guess_count = 0 
+  end
+
+
+  def store_answer
+    @correct_answer = @user_input.chars 
+    @correct_answer 
+  end 
+
+  def progress
+    @user_input.length.times do
+      @track_progress << "_" 
+    end 
+    @track_progress
+  end
+
+  def guesses_allowed
+    if @user_input.length < 7
+      @allowed_guesses = 4
+    elsif @user_input.length > 10
+      @allowed_guesses = 6
+    else 
+      @allowed_guesses = 5
+    end 
+    @allowed_guesses 
+  end 
+
+  def full_word(user_guess)
+    if user_guess.length == 1
+      @full_word = false
+    elsif user_guess.length > 1
+      @full_word = true
+    end
+    @full_word 
+  end 
+
   def letter_correct(user_guess)
       if @correct_answer.include?(user_guess)
         letter_correct = true
-        # user_guess.show_progress
         @guess_count += 1
       elsif @track_progress.include?(user_guess)
         letter_correct = true 
@@ -124,17 +138,6 @@ class WordGame
     p @track_progress.join(" ")
   end
 
-# Check if a full-word guess is correct/incorrect
-#  - Input: a string of more than one letter
-#  - Establish that win is not true
-#  - Divide input string into an array of letters
-#  - Compare this array to the correct-answer array
-#     - IF the arrays match:
-#       - win is true 
-#     - IF otherwise:
-#       - win is not true
-#  - Output: boolean - win/not win
-
   def word_correct(user_guess)
     if user_guess == @user_input 
       word_correct = true
@@ -143,10 +146,54 @@ class WordGame
     end
     word_correct 
   end
-
-
 end
 
+#----USER INTERFACE---------------
+
+puts "Welcome to the Word Game, for two players!"
+puts "Player 1, what is the secret word?"
+game = WordGame.new(gets.chomp)
+
+game.store_answer
+game.progress
+game.guesses_allowed
+puts "Player 2, you get #{@allowed_guesses} guesses!"
+
+until @guess_count > @allowed_guesses
+  puts "Guess a letter or the full word."
+  guess = gets.chomp
+  game.full_word(guess) 
+
+    if @full_word
+      game.word_correct(guess)
+      if @word_correct 
+        puts "You win!!!" 
+        break
+      else
+        puts "Nope, guess again."
+        game.show_progress(guess)
+      end
+      @guess_count += 1
+    elsif !@full_word 
+      game.letter_correct(guess)
+      if @letter_correct
+        puts "Great guess! Now, guess again."
+        game.show_progress(guess)
+      else
+        puts "Nope, guess again."
+        game.show_progress(guess)
+      end
+      @guess_count += 1
+    end
+end
+
+puts "Thanks for playing!"
+
+
+
+
+
+#----TEST CODE--------------------
 # name = "kristina"
 # game = WordGame.new("unicorn")
 
