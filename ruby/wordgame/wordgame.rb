@@ -7,18 +7,28 @@
 #  - Number of guesses is zero
 
 class WordGame
-  def initialize
+  def initialize(user_input)
+    @user_input = user_input 
     @correct_answer = []
     @track_progress = []
     @guess_count = 0 
   end
-end
 
 # Store the correct answer
 #  - Input: word as a string
 #  - Divide input string into separate characters and store in correct-answers array
 #  - Store underscores, the same number as correct-answer letters, to progress array
 #  - Output: array - progress (underscores)
+
+  def store_answer
+    @correct_answer = @user_input.chars 
+    @correct_answer 
+  end 
+
+
+end
+
+
 
 # Determine the number of guesses allowed
 #  - Input: number of letters in the correct-answer array
