@@ -6,6 +6,14 @@
 #  - Create empty progress array
 #  - Number of guesses is zero
 
+class WordGame
+  def initialize
+    @correct_answer = []
+    @track_progress = []
+    @guess_count = 0 
+  end
+end
+
 # Store the correct answer
 #  - Input: word as a string
 #  - Divide input string into separate characters and store in correct-answers array
