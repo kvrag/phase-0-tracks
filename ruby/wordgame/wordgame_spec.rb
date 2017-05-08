@@ -12,6 +12,7 @@ describe WordGame do
   end 
 
   it "determines the number of guesses allowed" do 
+    game.store_answer
     expect(game.guesses_allowed).to eq 5
   end 
 
@@ -20,10 +21,17 @@ describe WordGame do
   end
 
   it "checks if a one-letter guess is correct" do 
+    game.store_answer
     expect(game.letter_correct("c")).to eq true 
   end 
 
   it "checks if a full-word guess is correct" do
     expect(game.word_correct("unicorn")).to eq true 
+  end 
+
+  it "inserts a one-letter guess into the progress array" do
+    game.store_answer 
+    game.progress 
+    expect(game.show_progress("o")).to eq "_ _ _ _ o _ _"
   end 
 end 

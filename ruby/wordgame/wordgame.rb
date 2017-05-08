@@ -6,19 +6,21 @@
 #  - Create empty progress array
 #  - Number of guesses is zero
 
-class WordGame
-  def initialize(user_input)
-    @user_input = user_input 
-    @correct_answer = @user_input.chars 
-    @track_progress = []
-    @guess_count = 0 
-  end
-
 # Store the correct answer
 #  - Input: word as a string
 #  - Divide input string into separate characters and store in correct-answers array
 #  - Store underscores, the same number as correct-answer letters, to progress array
 #  - Output: array - progress (underscores)
+
+class WordGame
+  attr_reader :track_progress 
+
+  def initialize(user_input)
+    @user_input = user_input 
+    @correct_answer = [] 
+    @track_progress = []
+    @guess_count = 0 
+  end
 
   def store_answer
     @correct_answer = @user_input.chars 
@@ -96,12 +98,31 @@ class WordGame
 #  - Output: boolean - correct/not correct
 
   def letter_correct(user_guess)
-    if @correct_answer.include?(user_guess)
-      letter_correct = true
-    else
-      letter_correct = false
-    end
+      if @correct_answer.include?(user_guess)
+        letter_correct = true
+        # user_guess.show_progress
+        @guess_count += 1
+      elsif @track_progress.include?(user_guess)
+        letter_correct = true 
+      else
+        letter_correct = false
+        @guess_count += 1
+      end
+      letter_correct 
   end 
+
+  def show_progress(user_guess)
+    @correct_answer.each do |letter|  
+      if letter == user_guess
+        letter_idx = @correct_answer.index(user_guess) 
+        @track_progress.delete_at(letter_idx)
+        @track_progress.insert(letter_idx, letter)
+      else
+        @track_progress
+      end
+    end
+    p @track_progress.join(" ")
+  end
 
 # Check if a full-word guess is correct/incorrect
 #  - Input: a string of more than one letter
@@ -120,16 +141,18 @@ class WordGame
     else
       word_correct = false
     end
+    word_correct 
   end
 
 
 end
 
-
+# name = "kristina"
 # game = WordGame.new("unicorn")
-# p game.store_answer
-# p game.letter_correct("c")
 
+# p game.letter_correct("c")
+# p game.progress
+# p game.show_progress("c")
 
 
 
