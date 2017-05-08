@@ -8,7 +8,7 @@ describe WordGame do
   end
 
   it "creates an array of underscores for showing progress" do 
-    # expect (game.progress).to eq ["_", "_", "_", "_", "_", "_", "_"] 
+    expect(game.progress).to eq ["_", "_", "_", "_", "_", "_", "_"] 
   end 
 
   it "determines the number of guesses allowed" do 

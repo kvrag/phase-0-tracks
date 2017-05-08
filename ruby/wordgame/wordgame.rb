@@ -25,6 +25,12 @@ class WordGame
     @correct_answer 
   end 
 
+  def progress
+    @user_input.length.times do
+      @track_progress << "_" 
+    end 
+    @track_progress
+  end
 
 end
 
