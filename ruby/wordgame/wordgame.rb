@@ -53,11 +53,6 @@ class WordGame
     @allowed_guesses 
   end 
 
-
-end
-
-
-
 # Determine whether to run the one-letter guess method or the full-word guess method
 #  - Input: string of one or more letters
 #  - IF the string is more than one letter:
@@ -67,6 +62,21 @@ end
 #     - full word is not true
 #     - Run the method for a one-letter guess
 #  - Output: boolean - full word/not full word
+
+  def full_word(user_guess)
+    if user_guess.length == 1
+      @full_word = false
+    elsif user_guess.length > 1
+      @full_word = true
+    end
+    @full_word 
+  end 
+
+end
+
+
+
+
 
 # Check if a one-letter guess is correct/incorrect
 #  - Input: one letter

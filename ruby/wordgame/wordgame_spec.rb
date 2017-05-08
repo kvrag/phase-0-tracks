@@ -15,7 +15,8 @@ describe WordGame do
     expect(game.guesses_allowed).to eq 5
   end 
 
-  it "determines whether to guess one letter or full word" do
+  it "determines whether the guess is a full word" do
+    expect(game.full_word("u")).to eq false 
   end
 
   it "checks if a one-letter guess is correct" do 
