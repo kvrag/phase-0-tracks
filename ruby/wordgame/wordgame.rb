@@ -32,19 +32,31 @@ class WordGame
     @track_progress
   end
 
-end
-
-
-
 # Determine the number of guesses allowed
 #  - Input: number of letters in the correct-answer array
-#  - If the number of letters is 6 or less:
+#  - If the number of letters is less than 7:
 #     - the allowed number of guesses is 4
 #  - If the number of letters is between 7 and 10:
 #     - the allowed number of guesses is 5
 #  - If the number of letters is over 10:
 #     - the allowed number of guesses is 6
 #  - Output: integer - allowed number of guesses
+
+  def guesses_allowed
+    if @user_input.length < 7
+      @allowed_guesses = 4
+    elsif @user_input.length > 10
+      @allowed_guesses = 6
+    else 
+      @allowed_guesses = 5
+    end 
+    @allowed_guesses 
+  end 
+
+
+end
+
+
 
 # Determine whether to run the one-letter guess method or the full-word guess method
 #  - Input: string of one or more letters

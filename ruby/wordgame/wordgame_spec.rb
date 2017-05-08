@@ -12,7 +12,7 @@ describe WordGame do
   end 
 
   it "determines the number of guesses allowed" do 
-    # expect (game.guesses_allowed).to eq 5
+    expect(game.guesses_allowed).to eq 5
   end 
 
   it "determines whether to guess one letter or full word" do
