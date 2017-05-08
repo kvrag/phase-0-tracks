@@ -70,7 +70,7 @@
 #----BUSINESS LOGIC---------------
 
 class WordGame
-  attr_reader :track_progress, :guess_count, :full_word, :word_correct, :letter_correct, :allowed_guesses   
+  attr_accessor :track_progress, :guess_count, :full_word, :word_correct, :letter_correct, :allowed_guesses, :user_input   
 
   def initialize(user_input)
     @user_input = user_input 
@@ -154,19 +154,19 @@ puts "Welcome to the Word Game, for two players!"
 puts "Player 1, what is the secret word?"
 game = WordGame.new(gets.chomp)
 
-game.store_answer
-game.progress
-game.guesses_allowed
+p game.store_answer
+p game.progress
+p game.guesses_allowed
 puts "Player 2, you get #{@allowed_guesses} guesses!"
 
-until @guess_count > @allowed_guesses
+until @guess_count > @allowed_guesses # error - variables are nil
   puts "Guess a letter or the full word."
   guess = gets.chomp
   game.full_word(guess) 
 
     if @full_word
       game.word_correct(guess)
-      if @word_correct 
+      if @word_correct  #this line is wrong
         puts "You win!!!" 
         break
       else
@@ -176,7 +176,7 @@ until @guess_count > @allowed_guesses
       @guess_count += 1
     elsif !@full_word 
       game.letter_correct(guess)
-      if @letter_correct
+      if @letter_correct #this line is wrong
         puts "Great guess! Now, guess again."
         game.show_progress(guess)
       else
