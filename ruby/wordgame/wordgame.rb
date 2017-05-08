@@ -32,12 +32,13 @@
 #     - Run the method for a one-letter guess
 #  - Output: boolean - full word/not full word
 
-# Check if a one-letter guess is correct/incorrect
-#  - Input: one letter
+# Check if a guess is correct/incorrect
+#  - Input: one or more letters
+#  - Divide input string into separate characters and store in guess array
 #  - WHILE guesses <= allowed number:
-#     - Iterate through the array
-#       - IF the input matches one or more characters:
-#           - return the index(es) of the character(s) in the array
+#     - Iterate through the guess array
+#       - IF the letter matches a letter in the correct-answer array:
+#           - return the index(es) of the character(s) in the correct-answer array
 #           - insert input into progress array at these indexes, deleting the underscores that were in their place
 #           - correct is true
 #           - the number of guesses goes up by one
@@ -70,11 +71,12 @@
 #----BUSINESS LOGIC---------------
 
 class WordGame
-  attr_accessor :track_progress, :guess_count, :full_word, :word_correct, :letter_correct, :allowed_guesses, :user_input   
+  attr_accessor :track_progress, :guess_count, :full_word, :word_correct, :letter_correct, :allowed_guesses, :user_input, :guess_correct, :guess_counts, :user_guess     
 
   def initialize(user_input)
     @user_input = user_input 
     @correct_answer = [] 
+    @user_guess = []
     @track_progress = []
     @guess_count = 0 
   end
@@ -103,49 +105,74 @@ class WordGame
     @allowed_guesses 
   end 
 
-  def full_word(user_guess)
-    if user_guess.length == 1
-      @full_word = false
-    elsif user_guess.length > 1
-      @full_word = true
-    end
-    @full_word 
-  end 
+  # def full_word(user_guess)
+  #   if user_guess.length == 1
+  #     @full_word = false
+  #   elsif user_guess.length > 1
+  #     @full_word = true
+  #   end
+  #   @full_word 
+  # end 
 
-  def letter_correct(user_guess)
-      if @correct_answer.include?(user_guess)
-        letter_correct = true
-        @guess_count += 1
-      elsif @track_progress.include?(user_guess)
-        letter_correct = true 
+  # def letter_correct(user_guess)
+  #     if @correct_answer.include?(user_guess)
+  #       letter_correct = true
+  #       @guess_count += 1
+  #     elsif @track_progress.include?(user_guess)
+  #       letter_correct = true 
+  #     else
+  #       letter_correct = false
+  #       @guess_count += 1
+  #     end
+  #     letter_correct 
+  # end 
+
+  def guess_check(user_guess)
+    @guess_correct = false
+    @guess_counts = true
+    @user_guess = user_guess.chars 
+    @user_guess.each do |letter|
+      if @correct_answer.include?(letter)
+        @guess_correct = true
+      elsif @track_progress.include?(letter)
+        @guess_correct = true 
+        @guess_counts = false 
       else
-        letter_correct = false
-        @guess_count += 1
-      end
-      letter_correct 
-  end 
+        @guess_correct = false
+      end 
+      # @guess_correct = true if @correct_answer.include?(letter)
+      # @guess_counts = false if @track_progress.include?(letter) 
+      # # when @correct_answer.include?(letter)
+      #   @guess_correct
+      # when @correct_answer.include?(letter) || !@correct_answer.include?(letter)
+      #   @guess_counts
+      # else @track_progress.include?(letter) 
+      #   @guess_correct 
+      #   !@guess_counts
+      # end
+    end
+    @guess_correct 
+  end
 
-  def show_progress(user_guess)
-    @correct_answer.each do |letter|  
-      if letter == user_guess
-        letter_idx = @correct_answer.index(user_guess) 
+  def show_progress
+    @user_guess.each do |letter|  
+      if @correct_answer.include?(letter)
+        letter_idx = @correct_answer.index(letter) 
         @track_progress.delete_at(letter_idx)
         @track_progress.insert(letter_idx, letter)
-      else
-        @track_progress
       end
     end
     p @track_progress.join(" ")
   end
 
-  def word_correct(user_guess)
-    if user_guess == @user_input 
-      word_correct = true
-    else
-      word_correct = false
-    end
-    word_correct 
-  end
+  # def word_correct(user_guess)
+  #   if user_guess == @user_input 
+  #     word_correct = true
+  #   else
+  #     word_correct = false
+  #   end
+  #   word_correct 
+  # end
 end
 
 #----USER INTERFACE---------------
@@ -159,33 +186,34 @@ p game.progress
 p game.guesses_allowed
 puts "Player 2, you get #{@allowed_guesses} guesses!"
 
-until @guess_count > @allowed_guesses # error - variables are nil
+until @guess_count > @allowed_guesses # error - variables are nil??
   puts "Guess a letter or the full word."
   guess = gets.chomp
-  game.full_word(guess) 
+  game.guess_check(guess) 
 
-    if @full_word
-      game.word_correct(guess)
-      if @word_correct  #this line is wrong
-        puts "You win!!!" 
-        break
-      else
-        puts "Nope, guess again."
-        game.show_progress(guess)
-      end
+    if @guess_correct && @guess_counts 
+      puts "Great guess! Now guess again."
+      game.show_progress(guess) 
       @guess_count += 1
-    elsif !@full_word 
-      game.letter_correct(guess)
-      if @letter_correct #this line is wrong
-        puts "Great guess! Now, guess again."
-        game.show_progress(guess)
-      else
-        puts "Nope, guess again."
-        game.show_progress(guess)
-      end
+    elsif @guess_correct && !@guess_counts 
+      puts "You already guessed that! Now guess again."
+      game.show_progress(guess)
+      @guess_count += 0
+    else
+      puts "Nope, guess again."
+      game.show_progress(guess)
       @guess_count += 1
     end
+
+  break if @correct_answer == @track_progress
+
 end
+
+if @correct_answer == @track_progress
+  puts "You win! Great job!!"
+else
+  puts "Hahahaha so much for that."
+end 
 
 puts "Thanks for playing!"
 
@@ -194,12 +222,12 @@ puts "Thanks for playing!"
 
 
 #----TEST CODE--------------------
-# name = "kristina"
-# game = WordGame.new("unicorn")
 
-# p game.letter_correct("c")
-# p game.progress
-# p game.show_progress("c")
+# game = WordGame.new("unicorn")
+# p game.store_answer
+# p game.progress  
+# p game.guess_check("urc")
+# game.show_progress
 
 
 

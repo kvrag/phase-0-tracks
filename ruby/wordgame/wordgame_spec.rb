@@ -16,22 +16,29 @@ describe WordGame do
     expect(game.guesses_allowed).to eq 5
   end 
 
-  it "determines whether the guess is a full word" do
-    expect(game.full_word("u")).to eq false 
-  end
+  # it "determines whether the guess is a full word" do
+  #   expect(game.full_word("u")).to eq false 
+  # end
 
-  it "checks if a one-letter guess is correct" do 
+  # it "checks if a one-letter guess is correct" do 
+  #   game.store_answer
+  #   expect(game.letter_correct("c")).to eq true 
+  # end 
+
+  # it "checks if a full-word guess is correct" do
+  #   expect(game.word_correct("unicorn")).to eq true 
+  # end 
+
+  it "checks if a guess is correct" do 
     game.store_answer
-    expect(game.letter_correct("c")).to eq true 
+    game.progress 
+    expect(game.guess_check("uni")). to eq true
   end 
 
-  it "checks if a full-word guess is correct" do
-    expect(game.word_correct("unicorn")).to eq true 
-  end 
-
-  it "inserts a one-letter guess into the progress array" do
+  it "inserts a guess into the progress array" do
     game.store_answer 
     game.progress 
-    expect(game.show_progress("o")).to eq "_ _ _ _ o _ _"
+    game.guess_check("o")
+    expect(game.show_progress).to eq "_ _ _ _ o _ _"
   end 
 end 
