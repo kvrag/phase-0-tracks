@@ -105,28 +105,6 @@ class WordGame
     @allowed_guesses 
   end 
 
-  # def full_word(user_guess)
-  #   if user_guess.length == 1
-  #     @full_word = false
-  #   elsif user_guess.length > 1
-  #     @full_word = true
-  #   end
-  #   @full_word 
-  # end 
-
-  # def letter_correct(user_guess)
-  #     if @correct_answer.include?(user_guess)
-  #       letter_correct = true
-  #       @guess_count += 1
-  #     elsif @track_progress.include?(user_guess)
-  #       letter_correct = true 
-  #     else
-  #       letter_correct = false
-  #       @guess_count += 1
-  #     end
-  #     letter_correct 
-  # end 
-
   def guess_check(user_guess)
     @guess_correct = false
     @guess_counts = true
@@ -140,23 +118,14 @@ class WordGame
       else
         @guess_correct = false
       end 
-      # @guess_correct = true if @correct_answer.include?(letter)
-      # @guess_counts = false if @track_progress.include?(letter) 
-      # # when @correct_answer.include?(letter)
-      #   @guess_correct
-      # when @correct_answer.include?(letter) || !@correct_answer.include?(letter)
-      #   @guess_counts
-      # else @track_progress.include?(letter) 
-      #   @guess_correct 
-      #   !@guess_counts
-      # end
     end
     @guess_correct 
   end
 
+# with letters that occur more than once: how do we get this to replace the NEXT instance of that letter, rather than repeating the same one?
   def show_progress
-    @user_guess.each do |letter|  
-      if @correct_answer.include?(letter)
+    @correct_answer.each do |letter|  
+      if @user_guess.include?(letter)
         letter_idx = @correct_answer.index(letter) 
         @track_progress.delete_at(letter_idx)
         @track_progress.insert(letter_idx, letter)
@@ -164,58 +133,46 @@ class WordGame
     end
     p @track_progress.join(" ")
   end
-
-  # def word_correct(user_guess)
-  #   if user_guess == @user_input 
-  #     word_correct = true
-  #   else
-  #     word_correct = false
-  #   end
-  #   word_correct 
-  # end
 end
 
 #----USER INTERFACE---------------
 
-puts "Welcome to the Word Game, for two players!"
-puts "Player 1, what is the secret word?"
-game = WordGame.new(gets.chomp)
+# puts "Welcome to the Word Game, for two players!"
+# puts "Player 1, what is the secret word?"
+# game = WordGame.new(gets.chomp)
 
-p game.store_answer
-p game.progress
-p game.guesses_allowed
-puts "Player 2, you get #{@allowed_guesses} guesses!"
+# game.store_answer
+# game.progress
+# p @track_progress
+# game.show_progress 
+# number_allowed = game.guesses_allowed
+# puts "Player 2, you get #{number_allowed} guesses!"
 
-until @guess_count > @allowed_guesses # error - variables are nil??
-  puts "Guess a letter or the full word."
-  guess = gets.chomp
-  game.guess_check(guess) 
+# @guess_count = 0
+# puts "Guess a letter or the full word."
 
-    if @guess_correct && @guess_counts 
-      puts "Great guess! Now guess again."
-      game.show_progress(guess) 
-      @guess_count += 1
-    elsif @guess_correct && !@guess_counts 
-      puts "You already guessed that! Now guess again."
-      game.show_progress(guess)
-      @guess_count += 0
-    else
-      puts "Nope, guess again."
-      game.show_progress(guess)
-      @guess_count += 1
-    end
+# until @guess_count > number_allowed 
+#   guess = gets.chomp
+#   game.guess_check(guess) 
 
-  break if @correct_answer == @track_progress
+#     if @guess_correct
+#       puts "Great guess! Now guess again."
+#     else 
+#       puts "Nope, guess again."
+#     end
 
-end
+#   game.show_progress
+#   @guess_count += 1 unless @guess_counts = false
 
-if @correct_answer == @track_progress
-  puts "You win! Great job!!"
-else
-  puts "Hahahaha so much for that."
-end 
+# end
 
-puts "Thanks for playing!"
+# if @correct_answer == @track_progress
+#   puts "You win! Great job!!"
+# else
+#   puts "Hahahaha so much for that."
+# end 
+
+# puts "Thanks for playing!"
 
 
 

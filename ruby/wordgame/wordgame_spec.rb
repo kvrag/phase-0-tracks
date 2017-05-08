@@ -38,7 +38,9 @@ describe WordGame do
   it "inserts a guess into the progress array" do
     game.store_answer 
     game.progress 
-    game.guess_check("o")
-    expect(game.show_progress).to eq "_ _ _ _ o _ _"
+    game.guess_check("u")
+    expect(game.show_progress).to eq "u _ _ _ _ _ _" 
+    game.guess_check("n")
+    expect(game.show_progress).to eq "u n _ _ _ _ n"
   end 
 end 
