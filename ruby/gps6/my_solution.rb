@@ -11,6 +11,14 @@ require_relative 'state_data'
 
 class VirusPredictor
 
+# Class method defined inside VirusPredictor with self
+  def self.print_report(data)
+    data.each do |state_name, population_data|
+      state = new(state_name, population_data)
+      state.virus_effects
+    end
+  end
+
 # Pre-populates an instance of the Class with data, in this case the state and population info, in instance variables that can be used throughout the class (one state at a time)
   def initialize(state_of_origin, population_data)
     @state = state_of_origin
@@ -20,14 +28,14 @@ class VirusPredictor
 
 # Runs the predicted_deaths and speed_of_spread methods
   def virus_effects
-    predicted_deaths(@population_density, @population, @state)
-    speed_of_spread(@population_density, @state)
+    predicted_deaths
+    speed_of_spread
   end
 
-  private
+  private # Methods below this line cannot be called independently outside this class; limits the scope 
 
 # Calculates the number of predicted deaths based on population density and returns nil, prints a report to the screen
-  def predicted_deaths(population_density, population, state)
+  def predicted_deaths
     # predicted deaths is solely based on population density
     if @population_density >= 200
       number_of_deaths = (@population * 0.4).floor
@@ -46,7 +54,7 @@ class VirusPredictor
   end
 
 # Calculates the speed that the virus will spread based on population density and returns nil, prints a report to the screen
-  def speed_of_spread(population_density, state) #in months
+  def speed_of_spread #in months
     # We are still perfecting our formula here. The speed is also affected
     # by additional factors we haven't added into this functionality.
     speed = 0.0
@@ -74,10 +82,7 @@ end
 # DRIVER CODE
  # initialize VirusPredictor for each state
 
-STATE_DATA.each do |state_name, population_data|
-  state = VirusPredictor.new(state_name, population_data)
-  state.virus_effects
-end
+VirusPredictor.print_report(STATE_DATA)
 
 # alabama = VirusPredictor.new("Alabama", STATE_DATA["Alabama"][:population_density], STATE_DATA["Alabama"][:population])
 # alabama.virus_effects
