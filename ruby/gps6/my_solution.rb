@@ -4,7 +4,8 @@
 # We spent [#] hours on this challenge.
 
 # EXPLANATION OF require_relative
-#
+# Requiring an outside file relative to the current file - don't need file extension for fellow Ruby files
+# Require calls a built-in module or can be used to require a file in any directory
 #
 require_relative 'state_data'
 
