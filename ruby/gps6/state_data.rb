@@ -1,6 +1,7 @@
 #population density is number of people per square mile as of 2012
 #this data is updated every year with estimates from a 10 year census
 
+# STATE_DATA is a constant; its scope is global. Ruby will warn you if you try to reassign the value of a constant, which shouldn't change over the course of the program. Safer than using a global variable.
 
 STATE_DATA = {
   "Alabama" => {population_density: 94.65, population: 4822023},
