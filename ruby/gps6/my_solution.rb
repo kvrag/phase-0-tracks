@@ -41,7 +41,6 @@ class VirusPredictor
     # each 50 population density increases the multiplier by 0.1
     # divide population density by fifty to find out how many 0.1s to multiply the population by
 
-
     if @population_density >= 50
       number_of_deaths = (((@population_density / 50) * 0.1) * @population).floor
     else
