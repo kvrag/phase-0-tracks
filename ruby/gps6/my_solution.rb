@@ -37,14 +37,13 @@ class VirusPredictor
 # Calculates the number of predicted deaths based on population density and returns nil, prints a report to the screen
   def predicted_deaths
     # predicted deaths is solely based on population density
-    if @population_density >= 200
-      number_of_deaths = (@population * 0.4).floor
-    elsif @population_density >= 150
-      number_of_deaths = (@population * 0.3).floor
-    elsif @population_density >= 100
-      number_of_deaths = (@population * 0.2).floor
-    elsif @population_density >= 50
-      number_of_deaths = (@population * 0.1).floor
+
+    # each 50 population density increases the multiplier by 0.1
+    # divide population density by fifty to find out how many 0.1s to multiply the population by
+
+
+    if @population_density >= 50
+      number_of_deaths = (((@population_density / 50) * 0.1) * @population).floor
     else
       number_of_deaths = (@population * 0.05).floor
     end
