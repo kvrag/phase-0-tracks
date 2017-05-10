@@ -1,7 +1,7 @@
 # Virus Predictor
 
-# I worked on this challenge [by myself, with: ].
-# We spent [#] hours on this challenge.
+# I worked on this challenge with Laura Streb.
+# We spent 1 hours on this challenge (additional 1 hour on my own).
 
 # EXPLANATION OF require_relative
 # Requiring an outside file relative to the current file - don't need file extension for fellow Ruby files
