@@ -14,7 +14,11 @@ function reverse(str) {
   for (var i = str.length; i >= 0; i -= 1) {
     newStr = newStr.concat(str[i]);
   }
-  console.log(newStr);
+  return newStr; 
 }
 
 var helloReversed = reverse("hello"); 
+
+if (1 == 1) {
+  console.log(helloReversed)  // prints 'undefinedolleh' - why?
+}
