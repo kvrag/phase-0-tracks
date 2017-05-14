@@ -73,3 +73,7 @@ showObject(rainbow_horses)
 
 // Advantages/disadvantages to using constructor functions to create objects? 
 
+// Advantage: Can create multiple instances, as with a class in Ruby
+// Advantage: Can act as a blueprint (again, like Ruby)
+// Advantage: Can have variables that are NOT read/writeable -- in a literal constructor, anything can be rewritten 
+
