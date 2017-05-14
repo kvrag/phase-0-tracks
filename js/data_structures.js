@@ -27,6 +27,7 @@ for (var i=0; i < names.length; i++) {
 
 console.log(rainbow_horses)
 
+
 // write a constructor function for a car
 
 function Car(model, color) {
@@ -56,3 +57,19 @@ var fourthCar = new Car("Prius", "blue");
 fourthCar.age = 2
 console.log(fourthCar);
 fourthCar.vroom();
+
+
+// If you wanted to loop thru the keys and values of an object, how would you do that?
+
+function showObject(obj) {
+  for (var p in obj) {
+    if( obj.hasOwnProperty(p) ) {
+      console.log(p + ", " + obj[p])
+    } 
+  }              
+}
+
+showObject(rainbow_horses)
+
+// Advantages/disadvantages to using constructor functions to create objects? 
+
