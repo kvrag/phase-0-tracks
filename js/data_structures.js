@@ -18,5 +18,11 @@ function combine(name, color) {
   rainbow_horses[name] = color
 }
 
-combine("Stardust", "orange")
+// combine("Stardust", "orange")
+// console.log(rainbow_horses)
+
+for (var i=0; i < names.length; i++) {
+  combine(names[i], colors[i])
+}
+
 console.log(rainbow_horses)
