@@ -34,16 +34,25 @@ function Car(model, color) {
   this.model = model;
   this.color = color; 
   this.age = 0;
-  this.superCharged = true;
-    this.vroom = function() {
-      if (this.superCharged) {
-        console.log("Vvvvrrrrrrooooooooooom!");
-      } else {
-        console.log("*sputters, dies*");
-      }
-    };
+  this.vroom = function() { console.log("Vvvvrrrrrrooooooooooom!"); };
 };
 
-var firstCar = new Car("Porsche", "sporty red")
-console.log(firstCar)
-console.log(firstCar.vroom)
+var firstCar = new Car("Porsche", "sporty red");
+firstCar.age = 2
+console.log(firstCar);
+firstCar.vroom();
+
+var anotherCar = new Car("Station wagon", "wood-paneled");
+anotherCar.age = 26
+console.log(anotherCar);
+anotherCar.vroom();
+
+var thirdCar = new Car("Toyota Camry", "champagne");
+thirdCar.age = 10
+console.log(thirdCar);
+thirdCar.vroom();
+
+var fourthCar = new Car("Prius", "blue");
+fourthCar.age = 2
+console.log(fourthCar);
+fourthCar.vroom();
