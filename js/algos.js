@@ -40,14 +40,24 @@ console.log(wordSort(wordsPhrases))
 
 function checkPair(obj1, obj2) {
   for (var p in obj1) {
-    if(obj2.hasOwnProperty(p)) 
-      return true 
-  }
+    result = false
+    if(obj2.hasOwnProperty(p) && obj1[p] === obj2[p]) {
+      result = true;
+    // } else if(obj2.hasOwnProperty(p) && obj1[p] !== obj2[p]) {
+    //   result = false;
+    // } else if(!obj2.hasOwnProperty(p)) {
+    //   result = false; 
+    // } else {
+    //   result = false; 
+    }
+  }return result; 
 }
 
 obj1 = {name: "Steven", age: 54}
 obj2 = {name: "Tamir", age: 54}
 obj3 = {animal: "Dog", legs: 4}
 obj4 = {animal: "Dog", legs: 3}
+obj5 = {animal: "Bird", legs: 2}
 
 console.log(checkPair(obj1, obj2))
+console.log(checkPair(obj4, obj5))
