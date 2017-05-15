@@ -30,3 +30,24 @@ console.log(wordSort(phrases))
 console.log(wordSort(wordsPhrases))
 
 //---------------------------
+
+// Write a function that takes two objects and checks to see if the objects share at least one key-value pair.
+
+// iterate through object 1 
+// compare each key-value pair in object 1 with object 2
+// return 'true' if there is a match
+// else return 'false' 
+
+function checkPair(obj1, obj2) {
+  for (var p in obj1) {
+    if(obj2.hasOwnProperty(p)) 
+      return true 
+  }
+}
+
+obj1 = {name: "Steven", age: 54}
+obj2 = {name: "Tamir", age: 54}
+obj3 = {animal: "Dog", legs: 4}
+obj4 = {animal: "Dog", legs: 3}
+
+console.log(checkPair(obj1, obj2))
