@@ -31,6 +31,7 @@ console.log(wordSort(wordsPhrases))
 
 //---------------------------
 
+
 // Write a function that takes two objects and checks to see if the objects share at least one key-value pair.
 
 // 1. iterate through object 1 
@@ -66,6 +67,7 @@ console.log(checkPair(obj4, obj5))
 
 //---------------------------
 
+
 // Write a function that takes an integer for length, and builds and returns an array of strings of the given length. The words should be of randomly varying length, with a minimum of 1 letter and a maximum of 10 letters.
 
 // array length = passed into the function
@@ -75,25 +77,39 @@ console.log(checkPair(obj4, obj5))
 // 2. generate a string of random characters of that length
 // 3. do that a certain number of times (parameter) and push each result into an array
 
-// random character function source: http://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
+// helpful source: http://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
 
 
 
-function randChar(stringLength) {
-  var text = ""; 
-  var possible = "abcdefghijklmnopqrstuvwxyz";
-  for(var i = 0; i < stringLength; i++)
-    text += possible.charAt(Math.floor(Math.random() * possible.length));
-  return text; 
+function randStrings(arrayLength) {
+  var arr = [];
+  for(var i = 0; i < arrayLength; i++) {
+    var text = ""; 
+    var possible = "abcdefghijklmnopqrstuvwxyz";
+    var stringLength = Math.ceil(Math.random() * 11);
+    for(var j = 0; j < stringLength; j++) {
+      text += possible.charAt(Math.floor(Math.random() * possible.length+1));
+    }
+    arr.push(text); 
+  }
+  return arr;
 }
 
 
-
 //------DRIVER CODE----------
+
+// console.log(randStrings(4))
+// console.log(randStrings(8))
+
 // Do the following 10 times: generate an array, print the array, feed the array to your "longest word" function, and print the result.
 
-console.log(randChar(4))
-console.log(randChar(8))
+var n = 1
 
+while (n <= 10) {
+  var newArray = randStrings(3);
+  console.log(newArray);
+  console.log(wordSort(newArray));
+  n += 1;
+}
 
 //---------------------------
