@@ -20,3 +20,9 @@ var wordSort = function(arr){
   }while(swapped === true)
   return arr[-1];
 }
+
+words = ["moon", "cow", "cantaloupe", "margarine", "test"]
+phrases = ["apple pie", "creme de la creme", "scary face", "pie hole"]
+wordsPhrases = ["apple pie", "moon", "scary face", "margarine", "test"]
+
+console.log(wordSort(words))
