@@ -96,4 +96,26 @@ VirusPredictor.print_report(STATE_DATA)
 
 
 #=======================================================================
-# Reflection Section
+=begin 
+Reflection Section
+
+What are the differences between the two different hash syntaxes shown in the state_data file?
+ - The first hash syntax uses a string as the key and uses the hash rocket to point to the value. This is useful when you want the key to be "reader-friendly" or multiple words long.
+ - The second syntax uses a symbol as a key instead, and can then use a colon to point to the value. This is useful when you just want the data storage without needing it to be "pretty."
+
+What does require_relative do? How is it different from require?
+ - require_relative requires an outside file relative to the current file - don't need file extension for fellow Ruby files.
+ - Require calls a built-in module or can be used to require a file in any directory.
+
+What are some ways to iterate through a hash?
+- One way, as with the print_report method above, is to use .each and pass in the key and value as parameters.
+- You can also use a 'for' loop; for each key-value pair, do x. 
+
+When refactoring virus_effects, what stood out to you about the variables, if anything?
+- What stood out to me was that the variables were repetitive. If they are instance variables, there has to be a way to make it less repetitive.
+
+What concept did you most solidify in this challenge?
+- Refactoring by using mathematical concepts -- first time really doing this.
+- Also, passing info between methods so as to not repeat parameters/variables.
+
+=end
