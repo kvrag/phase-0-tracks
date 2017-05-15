@@ -6,23 +6,27 @@
 // return the last word/phrase in the array (the longest)
 
 
-var wordSort = function(arr){
-  do{
-    var swapped = false;
-    arr.forEach((word, i)){
-      if(word.length > arr[i + 1].length){
-        var temp = word;
-        arr[i] = arr[i + 1];
-        arr[i + 1] = temp;
-        swapped = true;
+function wordSort(arr){
+  var i, j, lim;
+  lim = arr.length; while(lim--) {
+    for(i = 0, j = 1; i < lim; i++, j++) 
+      if(arr[i].length > arr[j].length) {
+        var temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
       }
-    }
-  }while(swapped === true)
-  return arr[-1];
+  }
+  return arr.pop();
 }
+
+//------DRIVER CODE----------
 
 words = ["moon", "cow", "cantaloupe", "margarine", "test"]
 phrases = ["apple pie", "creme de la creme", "scary face", "pie hole"]
 wordsPhrases = ["apple pie", "moon", "scary face", "margarine", "test"]
 
 console.log(wordSort(words))
+console.log(wordSort(phrases))
+console.log(wordSort(wordsPhrases))
+
+//---------------------------
