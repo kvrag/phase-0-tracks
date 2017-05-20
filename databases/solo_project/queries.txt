@@ -38,4 +38,8 @@ sqlite>
 
 RELEASE 3: Research On Your Own (Joins) 
 
+(1)
+Left join, inner join, cross join (right join?), self-join, full outer join
+
+(2)
 
