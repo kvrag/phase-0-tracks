@@ -1,2 +1,17 @@
 8.4 RELEASE 2: View a Many-to-Many Relationship
 
+(2)
+sqlite> SELECT reviews.*, users.*, businesses.* FROM reviews JOIN users ON reviews.user_id = users.id JOIN businesses ON reviews.business_id = businesses.id;
+1|1|They towed my freaking car without asking!|2|2|2|Mandy|Kaling|2|Amir's Towing
+2|3|Nice atmosphere, drinks overpriced.|3|1|1|Bradford|Pitt|3|The Beagle Nightclub
+3|5|Balanced my chakras, A plus|4|4|4|Steven|Wonder|4|Lotus Yoga
+
+(3)
+sqlite> SELECT users.firstname, users.lastname, businesses.name, reviews.stars, reviews.comment FROM reviews JOIN users ON reviews.user_id = users.id JOIN businesses ON reviews.business_id = businesses.id;
+Mandy|Kaling|Amir's Towing|1|They towed my freaking car without asking!
+Bradford|Pitt|The Beagle Nightclub|3|Nice atmosphere, drinks overpriced.
+Steven|Wonder|Lotus Yoga|5|Balanced my chakras, A plus
+
+(4)
+sqlite> SELECT reviews.*, users.*, businesses.* FROM reviews JOIN users ON reviews.user_id = users.id JOIN businesses ON reviews.business_id = businesses.id WHERE businesses.id = 2;
+1|1|They towed my freaking car without asking!|2|2|2|Mandy|Kaling|2|Amir's Towing
