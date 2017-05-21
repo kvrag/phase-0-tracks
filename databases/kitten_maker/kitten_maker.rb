@@ -16,13 +16,14 @@ db = SQLite3::Database.new("kittens.db") # creates and stores a new database
 db.results_as_hash = true
 
 # learn about fancy string delimiters
-create_table_cmd = <<-SQL
+# declaring a string that will then get passed into a method to convert it and run it as SQL (it is not SQL yet!) - will use 'execute' method 
+create_table_cmd = <<-SQL # called a 'here doc', can say <<-ANYTHING
   CREATE TABLE IF NOT EXISTS kittens(
     id INTEGER PRIMARY KEY,
     name VARCHAR(255),
     age INT
   )
-SQL
+SQL # this just has to match the first 'opening quote'
 
 # create a kittens table (if it's not there already)
 db.execute(create_table_cmd)
