@@ -1,13 +1,18 @@
 # OPERATION KITTEN EXPLOSION!
 
 # talk about Object Relational Mapping (ORM)
+# how do we take relational data (database that stores data in tables, columns, rows, primary keys, foreign keys) and use it in an object-oriented language like Ruby or Python, or scripting language like Java that is object-oriented?
+# we want to use the data as arrays or hashes etc, where we can use it as an object and do things with it.
+# Also: Object Relational Management - sorta the same idea.
 
 # require gems
-require 'sqlite3'
-require 'faker'
+# gem: prewritten ruby that another programmer has written
+require 'sqlite3' # bridges the gap between ruby program and database
+require 'faker' # lets you create fake data for testing or populating
+# To install a gem: in terminal, `gem install [name of gem]`
 
 # create SQLite3 database
-db = SQLite3::Database.new("kittens.db")
+db = SQLite3::Database.new("kittens.db") # creates and stores a new database
 db.results_as_hash = true
 
 # learn about fancy string delimiters
