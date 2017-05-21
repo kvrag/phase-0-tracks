@@ -13,7 +13,7 @@ require 'faker' # lets you create fake data for testing or populating
 
 # create SQLite3 database
 db = SQLite3::Database.new("kittens.db") # creates and stores a new database
-db.results_as_hash = true
+db.results_as_hash = true # converts data to hash in ruby instead of array
 
 # learn about fancy string delimiters
 # declaring a string that will then get passed into a method to convert it and run it as SQL (it is not SQL yet!) - will use 'execute' method 
@@ -34,17 +34,21 @@ db.execute(create_table_cmd)
 # add LOOOOTS of kittens!
 # so. many. kittens. 
 #KittenExplosion
+# question marks are placeholders that are then defined by a second argument
 def create_kitten(db, name, age)
   db.execute("INSERT INTO kittens (name, age) VALUES (?, ?)", [name, age])
-end
+end 
 
-10000.times do
-  create_kitten(db, Faker::Name.name, 0)
+100.times do
+  create_kitten(db, Faker::Name.name, 0) # :: is a 'scope resolution operator' for name spacing - classes and modules and stuff can have nested classes and modules inside them for organizational purposes 
 end
 
 # explore ORM by retrieving data
-# kittens = db.execute("SELECT * FROM kittens")
-# kittens.each do |kitten|
-#  puts "#{kitten['name']} is #{kitten['age']}"
-# end
+kittens = db.execute("SELECT * FROM kittens")
+# puts kittens.class
+# p kittens 
+
+kittens.each do |kitten|
+ puts "#{kitten['name']} is #{kitten['age']}"
+end
 
