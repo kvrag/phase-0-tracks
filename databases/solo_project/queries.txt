@@ -42,4 +42,20 @@ RELEASE 3: Research On Your Own (Joins)
 Left join, inner join, cross join (right join?), self-join, full outer join
 
 (2)
+sqlite> SELECT vegetables.name, vegetables.cold_resistant, seasons.name FROM vegetables LEFT JOIN seasons ON vegetables.name = seasons.name;
+Bean bush|false|
+Beets|true|
+Broccoli|true|
+Cabbage|true|
+Carrots|true|
+
+sqlite> SELECT vegetables.name, vegetables.season_id, seasons.name FROM vegetables RIGHT JOIN seasons ON vegetables.season_id = seasons.id;
+Error: RIGHT and FULL OUTER JOINs are not currently supported
+
+sqlite> SELECT vegetables.name, vegetables.season_id, seasons.name FROM vegetables INNER JOIN seasons ON vegetables.season_id = seasons.id;
+Bean bush|4|Late Spring
+Beets|3|Spring
+Broccoli|4|Late Spring
+Cabbage|3|Spring
+Carrots|1|Winter
 
