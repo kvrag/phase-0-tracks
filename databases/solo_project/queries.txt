@@ -1,0 +1,61 @@
+RELEASE 2: Execute SQL Queries
+
+(1)
+sqlite> SELECT * FROM vegetables;
+1|Bean bush|1.5|50|false|Regularly|4
+2|Beets|0.5|40|true|Only in drought|3
+3|Broccoli|1|70|true|Only in drought|4
+4|Cabbage|0.5|100|true|Close to harvest|3
+5|Carrots|0.5|65|true|Only in drought|1
+6|Cauliflower|0.5|60|true|Close to harvest|1
+
+(2)
+sqlite> UPDATE vegetables SET days_to_maturity=80 WHERE name="Cauliflower";
+sqlite>
+
+(3)
+sqlite> SELECT * FROM vegetables, seasons WHERE vegetables.season_id = seasons.id;
+1|Bean bush|1.5|50|false|Regularly|4|4|Late Spring|May|June
+2|Beets|0.5|40|true|Only in drought|3|3|Spring|March|May
+3|Broccoli|1|70|true|Only in drought|4|4|Late Spring|May|June
+4|Cabbage|0.5|100|true|Close to harvest|3|3|Spring|March|May
+5|Carrots|0.5|65|true|Only in drought|1|1|Winter|January|May
+6|Cauliflower|0.5|80|true|Close to harvest|1|1|Winter|January|May
+
+(4)
+sqlite> SELECT vegetables.name, seasons.name FROM vegetables JOIN seasons ON vegetables.season_id = seasons.id;
+Bean bush|Late Spring
+Beets|Spring
+Broccoli|Late Spring
+Cabbage|Spring
+Carrots|Winter
+Cauliflower|Winter
+
+(5)
+sqlite> DELETE FROM vegetables WHERE name="Cauliflower";
+sqlite> 
+
+
+RELEASE 3: Research On Your Own (Joins) 
+
+(1)
+Left join, inner join, cross join (right join?), self-join, full outer join
+
+(2)
+sqlite> SELECT vegetables.name, vegetables.cold_resistant, seasons.name FROM vegetables LEFT JOIN seasons ON vegetables.name = seasons.name;
+Bean bush|false|
+Beets|true|
+Broccoli|true|
+Cabbage|true|
+Carrots|true|
+
+sqlite> SELECT vegetables.name, vegetables.season_id, seasons.name FROM vegetables RIGHT JOIN seasons ON vegetables.season_id = seasons.id;
+Error: RIGHT and FULL OUTER JOINs are not currently supported
+
+sqlite> SELECT vegetables.name, vegetables.season_id, seasons.name FROM vegetables INNER JOIN seasons ON vegetables.season_id = seasons.id;
+Bean bush|4|Late Spring
+Beets|3|Spring
+Broccoli|4|Late Spring
+Cabbage|3|Spring
+Carrots|1|Winter
+
