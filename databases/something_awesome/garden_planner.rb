@@ -6,3 +6,4 @@
 # their new garden data.
 
 require 'sqlite3'
+require 'garden.db'
