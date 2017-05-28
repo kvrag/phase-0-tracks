@@ -7,6 +7,20 @@
   <h1>Student Management System</h1>
   <p>Welcome to the student management system.</p>
   <p>Click <a href="students/new">here</a> to create a new student.</p>
+  <p>Submit the following form to view students by campus.</p>
+
+  <form id="campus_list" action="students/campus" method="GET">
+    <label>Campus:</label>
+    <select name="Campus" form="campus_list">
+      <option value="SD">San Diego</option>
+      <option value="SF">San Francisco</option>
+      <option value="NYC">New York City</option>
+      <option value="CHI">Chicago</option>
+      <option value="SEA">Seattle</option>
+    </select>
+    <input type="submit">
+  </form>
+
   <ul>
     <% @students.each do |student| %>
       <li><%= student['name'] %>, <%= student['age'] %></li>
