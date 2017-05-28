@@ -1,16 +1,34 @@
+<!DOCTYPE html>
 <html>
 <head>
   <title>Student Management System</title>
   <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:200,400,800" rel="stylesheet">
 </head>
 <body>
+
+<section>
   <h1>Student Management System</h1>
-  <p>Welcome to the student management system.</p>
-  <p>Click <a href="students/new">here</a> to create a new student.</p>
+  <h2>You are now viewing all students. <em>Congratulations.</em></h2>
+  <p><a href="students/new">Create a new student</a> or submit the following form to view students by campus.</p>
+
+  <form id="campus_list" action="students/campus" method="GET">
+    <label>Campus:</label>
+    <select name="campus" form="campus_list">
+      <option value="SD">San Diego</option>
+      <option value="SF">San Francisco</option>
+      <option value="NYC">New York City</option>
+      <option value="CHI">Chicago</option>
+      <option value="SEA">Seattle</option>
+    </select>
+    <input type="submit">
+  </form>
+
   <ul>
     <% @students.each do |student| %>
       <li><%= student['name'] %>, <%= student['age'] %></li>
     <% end %>
   </ul>
+</section>
 </body>
 </html>
