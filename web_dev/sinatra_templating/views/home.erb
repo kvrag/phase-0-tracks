@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
   <title>Student Management System</title>
@@ -11,7 +12,7 @@
 
   <form id="campus_list" action="students/campus" method="GET">
     <label>Campus:</label>
-    <select name="Campus" form="campus_list">
+    <select name="campus" form="campus_list">
       <option value="SD">San Diego</option>
       <option value="SF">San Francisco</option>
       <option value="NYC">New York City</option>
@@ -26,5 +27,6 @@
       <li><%= student['name'] %>, <%= student['age'] %></li>
     <% end %>
   </ul>
+
 </body>
 </html>

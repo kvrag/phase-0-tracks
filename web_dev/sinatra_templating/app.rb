@@ -24,4 +24,10 @@ post '/students' do
   redirect '/'
 end
 
+# view students by campus via form
+get '/students/campus' do 
+  @campus_students = db.execute("SELECT * FROM students WHERE campus=?", [params['campus']])
+  erb :by_campus
+end
+
 # add static resources

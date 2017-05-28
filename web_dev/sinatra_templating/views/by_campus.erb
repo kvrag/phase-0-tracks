@@ -2,13 +2,15 @@
 <html>
 <head>
   <title>Find Students by Campus</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="static/styles.css">
 </head>
 <body>
   <h1>Students by Campus</h1>
 
+  <p>For campus <%= params['campus'] %>:</p>
+
   <ul>
-    <% @students.each do |student| %>
+    <% @campus_students.each do |student| %>
       <li><%= student['name'] %>, <%= student['age'] %></li>
     <% end %>
   </ul>
